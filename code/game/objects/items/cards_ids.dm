@@ -822,14 +822,21 @@ update_label("John Doe", "Clowny")
 	icon_state = "data_1"
 	registered_name = "Unregistered ID"
 	assignment = "Department Access Pass"
+	var/access  // access list inserted
+	var/job  // used for copying the job access lists
+	var/access_desc  // the user-side description
+
+/obj/item/card/id/dept/proc/Initialize(mapload)
+	. = ..()
+	if(job)
+		access = job/access
 
 /obj/item/card/id/dept/afterattack(atom/target, mob/user, proximity)
 	. = ..()
 	if (!proximity)
 		return .
-	var/targetwear = target.wear_id
-	if(targetwear)
-		var/obj/item/card/id/idcard = targetwear
+	if(ishuman(target))
+		var/targetwear = target.wear_id
 	else
 		var/obj/item/card/id/idcard = target
 	if(istype(idcard))
@@ -851,38 +858,40 @@ update_label("John Doe", "Clowny")
 /obj/item/card/id/dept/eng
 	name = "Engineering access card"
 	desc = "Giving the greytide insuls since 2503. Grants Station Engineer access."
-	access = /datum/job/engineer/get_access()
+	job = new/datum/job/engineer
 	icon_state = "budget_eng"
 
 /obj/item/card/id/dept/sci
 	name = "Science access card"
 	desc = "Plasma research needs you! Grants Scientist access."
-	access = /datum/job/scientist/get_access()
+	job = new/datum/job/scientist
 	icon_state = "budget_sci"
 
 /obj/item/card/id/dept/med
 	name = "Medical access card"
 	desc = "For when everyone in the station mysteriously dies. Grants Medical Doctor access."
-	access = /datum/job/doctor/get_access()
+	job = new/datum/job/doctor
 	icon_state = "budget_med"
 
 /obj/item/card/id/dept/car
 	name = "Cargo access card"
 	desc = "Slaves you to the quartermaster. Grants Cargo Tech access."  // technically you can get full cargo access with the conscript card is this an issue?
-	access = /datum/job/cargo_tech/get_access()
+	job = new/datum/job/cargo_tech
 	icon_state = "budget_car"
 
 /obj/item/card/id/dept/sec
 	name = "Security access card"
 	desc = "Upgrades you to a member of the 'fantastic' security force! Armor not included. Grants Security Officer access (without department assignment)."  // if youre using this you presumably have a different department access anyway
-	access = /datum/job/officer/get_access()
+	job = new/datum/job/officer
 	icon_state = "budget_sec"
 
 /obj/item/card/id/dept/gold
 	name = "Captain's spare access card"
 	desc = "The most valuable card on the station. Grants Captain (all station) access."
-	access = /datum/job/captain/get_access()
+	access = get_all_accesses()
 	icon_state = "king"
+
+/obj/item/card/id/dept/gold/Initialize(mapload)
 
 /obj/item/cart/id/dept/nt
 	name = "Nanotrasen official access card"
