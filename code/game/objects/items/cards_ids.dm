@@ -822,11 +822,11 @@ update_label("John Doe", "Clowny")
 	icon_state = "data_1"
 	registered_name = "Unregistered ID"
 	assignment = "Department Access Pass"
-	var/access  // access list inserted
+	access  // access list inserted
 	var/job  // used for copying the job access lists
 	var/access_desc  // the user-side description
 
-/obj/item/card/id/dept/proc/Initialize(mapload)
+/obj/item/card/id/dept/Initialize(mapload)
 	. = ..()
 	if(job)
 		access = job/access
@@ -835,18 +835,19 @@ update_label("John Doe", "Clowny")
 	. = ..()
 	if (!proximity)
 		return .
-	if(ishuman(target))
-		var/targetwear = target.wear_id
-	else
-		var/obj/item/card/id/idcard = target
+	var/mob/living/carbon/human/H = target
+	var/obj/item/card/id/idcard = H.wear_id || target
 	if(istype(idcard))
 		idcard.access_extra = access
 		idcard.access_extra_desc = access_desc
 		if(name!=initial(name))
 			idcard.name = name
-		to_chat(user, "You upgrade the [idcard] with the [name].")
+		if(istype(H))
+			to_chat(user, "You upgrade [H.name]'s id.")
+			to_chat(H, "[user.name] has upgraded your card access! You now have access type [access_desc].")
+		else
+			to_chat(user, "You upgrade the [idcard] with the [name].")
 		log_id("[key_name(user)] added access to '[idcard]' using [src] at [AREACOORD(user)].")
-		qdel(src)
 
 /obj/item/card/id/dept/head
 	name = "Emergency command access card"
@@ -888,14 +889,18 @@ update_label("John Doe", "Clowny")
 /obj/item/card/id/dept/gold
 	name = "Captain's spare access card"
 	desc = "The most valuable card on the station. Grants Captain (all station) access."
-	access = get_all_accesses()
 	icon_state = "king"
 
 /obj/item/card/id/dept/gold/Initialize(mapload)
+	. = ..()
+	access = get_all_accesses()
 
-/obj/item/cart/id/dept/nt
+/obj/item/card/id/dept/nt
 	name = "Nanotrasen official access card"
-	desc = "People would kill for this card. Someone presumably has for it to be in your hands. Grants Nanotrasen (ALL EVER) access."
+	desc = "People would kill for this card. Someone presumably has for you to get it. Grants Nanotrasen (ALL EVER) access."
+
+/obj/item/card/id/dept/nt/Initialize(mapload)
+	. = ..()
 	access = get_all_accesses()+get_ert_access("commander")
 
 /// Job Specific ID Cards///
