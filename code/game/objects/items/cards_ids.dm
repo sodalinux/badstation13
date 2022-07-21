@@ -116,6 +116,8 @@
 	resistance_flags = FIRE_PROOF | ACID_PROOF
 	var/mining_points = 0 //For redeeming at mining equipment vendors
 	var/list/access = list()
+	var/list/access_extra = list()  // departmental addit access
+	var/access_extra_desc  // description used for the examine
 	var/registered_name// The name registered_name on the card
 	var/assignment
 	var/hud_state = JOB_HUD_UNKNOWN
@@ -298,9 +300,13 @@
 			. += "<span class='boldnotice'>If you lose this ID card, you can reclaim your account by Alt-Clicking a blank ID card while holding it and entering your account ID number.</span>"
 	else
 		. += "<span class='info'>There is no registered account linked to this card. Alt-Click to add one.</span>"
+	if(access_extra)
+		. += "This card has additional accesses granted by command. [(access_extra_desc) ? "The description field is [access_extra_desc]" : "There is no additional description."]"
 
 /obj/item/card/id/GetAccess()
-	return access
+	var/tmp = access
+	tmp += access_extra
+	return tmp
 
 /obj/item/card/id/GetID()
 	return src
