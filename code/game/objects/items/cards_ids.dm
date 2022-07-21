@@ -816,6 +816,79 @@ update_label("John Doe", "Clowny")
 	icon_state = "budget_sec"
 	hud_state = JOB_HUD_RAWSECURITY
 
+// Department Access CARDS //
+/obj/item/card/id/dept
+	name = "Basic department card"
+	icon_state = "data_1"
+	registered_name = "Unregistered ID"
+	assignment = "Department Access Pass"
+
+/obj/item/card/id/dept/afterattack(atom/target, mob/user, proximity)
+	. = ..()
+	if (!proximity)
+		return .
+	var/targetwear = target.wear_id
+	if(targetwear)
+		var/obj/item/card/id/idcard = targetwear
+	else
+		var/obj/item/card/id/idcard = target
+	if(istype(idcard))
+		idcard.access_extra = access
+		idcard.access_extra_desc = access_desc
+		if(name!=initial(name))
+			idcard.name = name
+		to_chat(user, "You upgrade the [idcard] with the [name].")
+		log_id("[key_name(user)] added access to '[idcard]' using [src] at [AREACOORD(user)].")
+		qdel(src)
+
+/obj/item/card/id/dept/head
+	name = "Emergency command access card"
+	desc = "When the station is falling apart, what you really need is more command staff!"
+	access = list(ACCESS_WEAPONS, ACCESS_EVA, ACCESS_HEADS, ACCESS_ALL_PERSONAL_LOCKERS, ACCESS_MAINT_TUNNELS,
+		ACCESS_KEYCARD_AUTH, ACCESS_TELEPORTER)  // grants permission associated with command staff
+	icon_state = "budget_srv"
+
+/obj/item/card/id/dept/eng
+	name = "Engineering access card"
+	desc = "Giving the greytide insuls since 2503. Grants Station Engineer access."
+	access = /datum/job/engineer/get_access()
+	icon_state = "budget_eng"
+
+/obj/item/card/id/dept/sci
+	name = "Science access card"
+	desc = "Plasma research needs you! Grants Scientist access."
+	access = /datum/job/scientist/get_access()
+	icon_state = "budget_sci"
+
+/obj/item/card/id/dept/med
+	name = "Medical access card"
+	desc = "For when everyone in the station mysteriously dies. Grants Medical Doctor access."
+	access = /datum/job/doctor/get_access()
+	icon_state = "budget_med"
+
+/obj/item/card/id/dept/car
+	name = "Cargo access card"
+	desc = "Slaves you to the quartermaster. Grants Cargo Tech access."  // technically you can get full cargo access with the conscript card is this an issue?
+	access = /datum/job/cargo_tech/get_access()
+	icon_state = "budget_car"
+
+/obj/item/card/id/dept/sec
+	name = "Security access card"
+	desc = "Upgrades you to a member of the 'fantastic' security force! Armor not included. Grants Security Officer access (without department assignment)."  // if youre using this you presumably have a different department access anyway
+	access = /datum/job/officer/get_access()
+	icon_state = "budget_sec"
+
+/obj/item/card/id/dept/gold
+	name = "Captain's spare access card"
+	desc = "The most valuable card on the station. Grants Captain (all station) access."
+	access = /datum/job/captain/get_access()
+	icon_state = "king"
+
+/obj/item/cart/id/dept/nt
+	name = "Nanotrasen official access card"
+	desc = "People would kill for this card. Someone presumably has for it to be in your hands. Grants Nanotrasen (ALL EVER) access."
+	access = get_all_accesses()+get_ert_access("commander")
+
 /// Job Specific ID Cards///
 // These should have default job name and hud state, etc, because chameleon card needs such information
 // ---- Command ----
