@@ -822,29 +822,29 @@ update_label("John Doe", "Clowny")
 	icon_state = "data_1"
 	registered_name = "Unregistered ID"
 	assignment = "Department Access Pass"
-	access  // access list inserted
-	var/job  // used for copying the job access lists
+	hud_state = JOB_HUD_UNKNOWN
+	var/list/access_extra_add  // access list inserted
 	var/access_desc  // the user-side description
-
-/obj/item/card/id/dept/Initialize(mapload)
-	. = ..()
-	if(job)
-		access = job/access
 
 /obj/item/card/id/dept/afterattack(atom/target, mob/user, proximity)
 	. = ..()
 	if (!proximity)
 		return .
-	var/mob/living/carbon/human/H = target
-	var/obj/item/card/id/idcard = H.wear_id || target
+	var/obj/item/card/id/idcard = target
+	var/mob/living/carbon/human/target_carbon
+
+	if(istype(idcard, /mob/living/carbon))
+		target_carbon = target
+		idcard = target_carbon.wear_id
+
 	if(istype(idcard))
-		idcard.access_extra = access
+		idcard.access_extra = access_extra_add
 		idcard.access_extra_desc = access_desc
 		if(name!=initial(name))
 			idcard.name = name
-		if(istype(H))
-			to_chat(user, "You upgrade [H.name]'s id.")
-			to_chat(H, "[user.name] has upgraded your card access! You now have access type [access_desc].")
+		if(istype(target_carbon))
+			to_chat(user, "You upgrade [target_carbon.name]'s id.")
+			to_chat(target_carbon, "[user.name] has upgraded your card access! You now have access type [access_desc].")
 		else
 			to_chat(user, "You upgrade the [idcard] with the [name].")
 		log_id("[key_name(user)] added access to '[idcard]' using [src] at [AREACOORD(user)].")
@@ -852,56 +852,68 @@ update_label("John Doe", "Clowny")
 /obj/item/card/id/dept/head
 	name = "Emergency command access card"
 	desc = "When the station is falling apart, what you really need is more command staff!"
-	access = list(ACCESS_WEAPONS, ACCESS_EVA, ACCESS_HEADS, ACCESS_ALL_PERSONAL_LOCKERS, ACCESS_MAINT_TUNNELS,
-		ACCESS_KEYCARD_AUTH, ACCESS_TELEPORTER)  // grants permission associated with command staff
+	access_extra_add = list(ACCESS_WEAPONS, ACCESS_EVA, ACCESS_HEADS, ACCESS_ALL_PERSONAL_LOCKERS, ACCESS_MAINT_TUNNELS,
+		ACCESS_KEYCARD_AUTH, ACCESS_TELEPORTER)  // grants basic command staff
+	access_desc = "EMERGENCY_HEAD"
 	icon_state = "budget_srv"
 
 /obj/item/card/id/dept/eng
 	name = "Engineering access card"
 	desc = "Giving the greytide insuls since 2503. Grants Station Engineer access."
-	job = new/datum/job/engineer
+	access_extra_add = list(ACCESS_ENGINE, ACCESS_ENGINE_EQUIP, ACCESS_TECH_STORAGE, ACCESS_MAINT_TUNNELS, ACCESS_MECH_ENGINE,
+					ACCESS_EXTERNAL_AIRLOCKS, ACCESS_CONSTRUCTION, ACCESS_TCOMSAT, ACCESS_MINERAL_STOREROOM, ACCESS_AUX_BASE)
+	// all basic dept ones retrieve from the minimal access from the respective /datum/job
+	access_desc = "DEPT_ENG"
 	icon_state = "budget_eng"
 
 /obj/item/card/id/dept/sci
 	name = "Science access card"
 	desc = "Plasma research needs you! Grants Scientist access."
-	job = new/datum/job/scientist
+	access_extra_add = list(ACCESS_TOX, ACCESS_TOX_STORAGE, ACCESS_RESEARCH, ACCESS_XENOBIOLOGY, ACCESS_MECH_SCIENCE,
+					ACCESS_MINERAL_STOREROOM, ACCESS_AUX_BASE)  // removed exploration
+	access_extra_desc = "DEPT_SCI"
 	icon_state = "budget_sci"
 
 /obj/item/card/id/dept/med
 	name = "Medical access card"
 	desc = "For when everyone in the station mysteriously dies. Grants Medical Doctor access."
-	job = new/datum/job/doctor
+	access_extra_add = list(ACCESS_MEDICAL, ACCESS_MORGUE, ACCESS_SURGERY, ACCESS_CLONING, ACCESS_MECH_MEDICAL, ACCESS_MINERAL_STOREROOM, ACCESS_MAINT_TUNNELS)
+	access_extra_desc = "DEPT_MED"
 	icon_state = "budget_med"
 
 /obj/item/card/id/dept/car
 	name = "Cargo access card"
 	desc = "Slaves you to the quartermaster. Grants Cargo Tech access."  // technically you can get full cargo access with the conscript card is this an issue?
-	job = new/datum/job/cargo_tech
+	access_extra_add = list(ACCESS_CARGO, ACCESS_MAILSORTING, ACCESS_MINERAL_STOREROOM)  // removed maint access
+	access_extra_desc = "DEPT_CAR"
 	icon_state = "budget_car"
 
 /obj/item/card/id/dept/sec
 	name = "Security access card"
 	desc = "Upgrades you to a member of the 'fantastic' security force! Armor not included. Grants Security Officer access (without department assignment)."  // if youre using this you presumably have a different department access anyway
-	job = new/datum/job/officer
+	access_extra_add = list(ACCESS_SECURITY, ACCESS_SEC_DOORS, ACCESS_SEC_RECORDS, ACCESS_BRIG, ACCESS_COURT, ACCESS_WEAPONS,
+					ACCESS_MECH_SECURITY, ACCESS_MINERAL_STOREROOM)
+	access_extra_desc = "DEPT_SEC"
 	icon_state = "budget_sec"
 
 /obj/item/card/id/dept/gold
 	name = "Captain's spare access card"
 	desc = "The most valuable card on the station. Grants Captain (all station) access."
+	access_extra_desc = "CAP_ALL"
 	icon_state = "king"
 
 /obj/item/card/id/dept/gold/Initialize(mapload)
 	. = ..()
-	access = get_all_accesses()
+	access_extra_add = get_all_accesses()
 
 /obj/item/card/id/dept/nt
 	name = "Nanotrasen official access card"
-	desc = "People would kill for this card. Someone presumably has for you to get it. Grants Nanotrasen (ALL EVER) access."
+	desc = "People would kill for this card. Someone presumably has for you to get it. Grants Nanotrasen (all) access."
+	access_extra_desc = "NT"
 
 /obj/item/card/id/dept/nt/Initialize(mapload)
 	. = ..()
-	access = get_all_accesses()+get_ert_access("commander")
+	access_extra_add = get_all_accesses()+get_ert_access("commander")  // not sure if it gives *every* access but hey its not obtainable normally so it doesnt matter
 
 /// Job Specific ID Cards///
 // These should have default job name and hud state, etc, because chameleon card needs such information
