@@ -823,7 +823,7 @@ update_label("John Doe", "Clowny")
 	registered_name = "Unregistered ID"
 	assignment = "Department Access Pass"
 	hud_state = JOB_HUD_UNKNOWN
-	var/list/access_extra_add  // access list inserted
+	var/list/access_extra_add  // denotes accesses specifically gained from the id (not preexisting ones)
 	var/access_desc  // the user-side description
 
 /obj/item/card/id/dept/afterattack(atom/target, mob/user, proximity)
@@ -838,16 +838,37 @@ update_label("John Doe", "Clowny")
 		idcard = target_carbon.wear_id
 
 	if(istype(idcard))
-		idcard.access_extra = access_extra_add
-		idcard.access_extra_desc = access_desc
-		if(name!=initial(name))
-			idcard.name = name
+		// you cant downgrade a captains or nt access
+		if((istype(idcard, /obj/item/card/id/dept/gold) || istype(idcard, /obj/item/card/id/dept/gold)) && !(istype(src, /obj/item/card/id/dept/nt)))
+			to_chat(user, "<span class='warning'>You can't downgrade a captain's id!</span>")
+			return .
+		var/diff = change_access(idcard, access_extra_add, access_desc)
+
 		if(istype(target_carbon))
-			to_chat(user, "You upgrade [target_carbon.name]'s id.")
-			to_chat(target_carbon, "[user.name] has upgraded your card access! You now have access type [access_desc].")
+			to_chat(user, "You [diff] [target_carbon.name]'s id.")
+			to_chat(target_carbon, "[user.name] has [diff] your card with access type [access_desc]!")
 		else
-			to_chat(user, "You upgrade the [idcard] with the [name].")
-		log_id("[key_name(user)] added access to '[idcard]' using [src] at [AREACOORD(user)].")
+			to_chat(user, "You [diff] the [idcard] with the [name].")
+		log_id("[key_name(user)] [changed] access to '[idcard]' (TYPE: [access_desc]) using [src] at [AREACOORD(user)].")
+
+/obj/item/card/id/dept/proc/change_access(obj/item/card/id/targetcard, access, desc)
+		var/diff = FALSE
+		if(targetcard.access_extra_desc)
+			diff = TRUE
+
+		targetcard.access_extra_desc = null  // clears existing extra access to replace
+		targetcard.access -= targetcard.access_extra
+		targetcard.access_extra = list()
+
+		if(idcard.access_extra_desc != access_desc || access)  // removing duplicate access
+			var/list/newaccess = targetcard.access & access  // gets preexisting access
+			newaccess ^= access  // reverses to get new acceses
+			targetcard.access_extra += newaccess
+			targetcard.access_extra_desc = desc
+			if(diff)
+				return "changed"
+			return "upgraded"
+		return "downgraded"
 
 /obj/item/card/id/dept/head
 	name = "Emergency command access card"
