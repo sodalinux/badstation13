@@ -240,7 +240,7 @@
 /obj/item/razor/straightrazor
 	name = "straight razor"
 	icon_state = "straightrazor"
-	desc = "An incredibly sharp razor used to shave chins, make surgical incisions, and slit the throats of unpaying customers"
+	desc = "An incredibly sharp razor used to shave chins, make surgical incisions, and slit the throats of unpaying customers."
 	flags_1 = CONDUCT_1
 	force = 3
 	w_class = WEIGHT_CLASS_TINY
