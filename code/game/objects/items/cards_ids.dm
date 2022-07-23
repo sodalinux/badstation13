@@ -116,7 +116,7 @@
 	resistance_flags = FIRE_PROOF | ACID_PROOF
 	var/mining_points = 0 //For redeeming at mining equipment vendors
 	var/list/access = list()
-	var/list/access_extra = list()  // departmental addit access
+	var/list/access_extra  // departmental addit access
 	var/access_extra_desc  // description used for the examine
 	var/registered_name// The name registered_name on the card
 	var/assignment
@@ -304,9 +304,7 @@
 		. += "This card has additional accesses granted by command. [(access_extra_desc) ? "The description field is [access_extra_desc]" : "There is no additional description."]"
 
 /obj/item/card/id/GetAccess()
-	var/tmp = access
-	tmp += access_extra
-	return tmp
+	return access
 
 /obj/item/card/id/GetID()
 	return src
@@ -852,21 +850,22 @@ update_label("John Doe", "Clowny")
 			to_chat(user, "You [diff] the [idcard] with the [name].")
 		log_id("[key_name(user)] [diff] access to '[idcard]' (TYPE: [access_desc]) using [src] at [AREACOORD(user)].")
 
-/obj/item/card/id/dept/proc/change_access(obj/item/card/id/targetcard, downgrade = FALSE)
+/obj/item/card/id/dept/proc/change_access(obj/item/card/id/targetcard)
 	// if access is omitted, clear
 	var/changed_access = FALSE
 	if(targetcard.access_extra_desc)
 		changed_access = TRUE
 
+	var/oldaccess = targetcard.access_extra_desc
 	targetcard.access_extra_desc = null  // clears existing extra access to replace
 	targetcard.access -= targetcard.access_extra
-	targetcard.access_extra = list()
+	targetcard.access_extra -= targetcard.access_extra
 
-	if(targetcard.access_extra_desc != access_desc && downgrade)  // removing duplicate access
-		var/list/newaccess = targetcard.access & access_extra_add  // gets preexisting access
-		newaccess ^= access_extra_add  // reverses to get new acceses
+	if(oldaccess != src.access_desc)  // removing duplicate access
+		var/list/newaccess = targetcard.access & src.access_extra_add  // gets preexisting access
+		newaccess ^= src.access_extra_add  // reverses to get new acceses
 		targetcard.access_extra += newaccess
-		targetcard.access_extra_desc = access_desc
+		targetcard.access_extra_desc = src.access_desc
 		if(changed_access)
 			return "changed"
 		return "upgraded"
@@ -929,6 +928,10 @@ update_label("John Doe", "Clowny")
 /obj/item/card/id/dept/omni  // captains combo-card
 	name = "Combination access card"
 	desc = "A access card specially designed for the captain. This card can provide access to any department."
+
+/obj/item/card/id/dept/omni/attack_self(mob/user)
+	if(!user)
+		return
 
 /obj/item/card/id/dept/gold
 	name = "Captain's spare access card"
