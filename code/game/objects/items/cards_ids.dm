@@ -843,7 +843,7 @@ update_label("John Doe", "Clowny")
 			to_chat(user, "<span class='warning'>You can't downgrade a captain's id!</span>")
 			return .
 
-		var/diff = change_access(idcard, access_extra_add, access_desc)
+		var/diff = change_access(idcard)
 
 		if(istype(target_carbon))
 			to_chat(user, "You [diff] [target_carbon.name]'s id.")
@@ -852,22 +852,22 @@ update_label("John Doe", "Clowny")
 			to_chat(user, "You [diff] the [idcard] with the [name].")
 		log_id("[key_name(user)] [diff] access to '[idcard]' (TYPE: [access_desc]) using [src] at [AREACOORD(user)].")
 
-/obj/item/card/id/dept/proc/change_access(obj/item/card/id/targetcard, access, desc)
+/obj/item/card/id/dept/proc/change_access(obj/item/card/id/targetcard, downgrade = FALSE)
 	// if access is omitted, clear
-	var/diff = FALSE
+	var/changed_access = FALSE
 	if(targetcard.access_extra_desc)
-		diff = TRUE
+		changed_access = TRUE
 
 	targetcard.access_extra_desc = null  // clears existing extra access to replace
 	targetcard.access -= targetcard.access_extra
 	targetcard.access_extra = list()
 
-	if(targetcard.access_extra_desc != access_desc || !access)  // removing duplicate access
-		var/list/newaccess = targetcard.access & access  // gets preexisting access
-		newaccess ^= access  // reverses to get new acceses
+	if(targetcard.access_extra_desc != access_desc && downgrade)  // removing duplicate access
+		var/list/newaccess = targetcard.access & access_extra_add  // gets preexisting access
+		newaccess ^= access_extra_add  // reverses to get new acceses
 		targetcard.access_extra += newaccess
-		targetcard.access_extra_desc = desc
-		if(diff)
+		targetcard.access_extra_desc = access_desc
+		if(changed_access)
 			return "changed"
 		return "upgraded"
 	return "downgraded"
@@ -897,6 +897,13 @@ update_label("John Doe", "Clowny")
 	access_extra_desc = "DEPT_SCI"
 	icon_state = "budget_sci"
 
+/obj/item/card/id/dept/ai
+	name = "AI access card"
+	desc = "The admin backdoor for the door-opener. Grants AI Sat/Upload access."
+	access_extra_add = list(ACCESS_ROBOTICS, ACCESS_AI_UPLOAD, ACCESS_TECH_STORAGE, ACCESS_MINISAT)
+	access_extra_desc = "ADMIN_AI"
+	icon_state = "budget_sci"
+
 /obj/item/card/id/dept/med
 	name = "Medical access card"
 	desc = "For when everyone in the station mysteriously dies. Grants Medical Doctor access."
@@ -918,6 +925,10 @@ update_label("John Doe", "Clowny")
 					ACCESS_MECH_SECURITY, ACCESS_MINERAL_STOREROOM)
 	access_extra_desc = "DEPT_SEC"
 	icon_state = "budget_sec"
+
+/obj/item/card/id/dept/omni  // captains combo-card
+	name = "Combination access card"
+	desc = "A access card specially designed for the captain. This card can provide access to any department."
 
 /obj/item/card/id/dept/gold
 	name = "Captain's spare access card"
