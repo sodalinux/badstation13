@@ -2369,7 +2369,7 @@ All effects don't start immediately, but rather get worse over time; the rate is
 	var/datum/brain_trauma/trauma = traumaweightpick(60,40,0)
 	trauma = new trauma()
 	trauma_list += trauma
-	M.gain_trauma(trauma, TRAUMA_RESILIENCE_ABSOLUTE)
+	M.gain_trauma(trauma, TRAUMA_RESILIENCE_SPECIAL)
 	..()
 
 /datum/reagent/consumable/ethanol/fourthwall/on_mob_life(mob/living/carbon/M)

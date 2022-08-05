@@ -173,6 +173,7 @@
 #define TRAUMA_RESILIENCE_LOBOTOMY 3   //! Curable with lobotomy
 #define TRAUMA_RESILIENCE_MAGIC 4      //! Curable only with magic
 #define TRAUMA_RESILIENCE_ABSOLUTE 5   //! This is here to stay
+#define TRAUMA_RESILIENCE_SPECIAL 6    //! Uncurable without special circumstances (Currently only fourth wall drink)
 
 //Limit of traumas for each resilience tier
 #define TRAUMA_LIMIT_BASIC 3

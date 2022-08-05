@@ -181,6 +181,8 @@ GENE SCANNER
 						trauma_desc += "deep-rooted "
 					if(TRAUMA_RESILIENCE_MAGIC, TRAUMA_RESILIENCE_ABSOLUTE)
 						trauma_desc += "permanent "
+					if(TRAUMA_RESILIENCE_SPECIAL)
+						trauma_desc += "specially formed  "
 				trauma_desc += B.scan_desc
 				trauma_text += trauma_desc
 			to_chat(user, "\t<span class='alert'>Cerebral traumas detected: subject appears to be suffering from [english_list(trauma_text)].</span>")
