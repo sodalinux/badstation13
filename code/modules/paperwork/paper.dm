@@ -50,6 +50,8 @@
 	/// This is an associated list
 	var/list/form_fields = list()
 	var/field_counter = 1
+	
+	var/laminate = LAMINATE_NONE
 
 /obj/item/paper/Destroy()
 	stamps = null
@@ -106,8 +108,16 @@
 	update_icon()
 
 /obj/item/paper/update_icon_state()
-	if(info && show_written_words)
-		icon_state = "[initial(icon_state)]_words"
+	switch(laminate)
+		if(LAMINATE_NONE)
+			if(info && show_written_words)
+				icon_state = "[initial(icon_state)]_words"
+		if(LAMINATE_STD)
+			icon_state = "paper_lam"
+		if(LAMINATE_HEAD)
+			icon_state = "paper_lam_head"
+		if(LAMINATE_COM to INFINITY)
+			icon_state = "paper_lam_gold"
 
 /obj/item/paper/verb/rename()
 	set name = "Rename paper"
@@ -202,6 +212,21 @@
 	if(istype(P, /obj/item/clipboard) || istype(P, /obj/item/folder))
 		P.attackby(src, user)
 		return
+	if(istype(P, /obj/item/wirecutters))
+		switch(laminate)
+			if(LAMINATE_NONE)
+				to_chat(user, "You snip the paper into inconcevably small pieces.")
+				QDEL(src)
+			if(LAMINATE_STD)
+				to_chat(user, "You carefully snip the edge of the paper, and slide it out from the lamination."
+				laminate = LAMINATE_NONE
+				return
+			if(LAMINATE_HEAD to INFINITY)
+				to_chat(user, "You attempt to cut out the paper, but the lamination is too tough!"
+				
+	if(laminate)
+		return  // the rest of it cant apply to lamination
+	
 	else if(istype(P, /obj/item/pen) || istype(P, /obj/item/toy/crayon))
 		if(length(info) >= MAX_PAPER_LENGTH) // Sheet must have less than 1000 charaters
 			to_chat(user, "<span class='warning'>This sheet of paper is full!</span>")
@@ -213,7 +238,6 @@
 		ui_interact(user)
 		return /// Normaly you just stamp, you don't need to read the thing
 	else
-		// cut paper?  the sky is the limit!
 		ui_interact(user)	// The other ui will be created with just read mode outside of this
 
 	return ..()

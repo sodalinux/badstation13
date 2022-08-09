@@ -469,3 +469,10 @@ GLOBAL_LIST_INIT(pda_styles, sortList(list(MONO, VT, ORBITRON, SHARE)))
 #define ALIGNMENT_GOOD "good"
 #define ALIGNMENT_NEUT "neutral"
 #define ALIGNMENT_EVIL "evil"
+
+
+//Lamination
+#define LAMINATE_NONE 0
+#define LAMINATE_STD 1  // library and public laminators
+#define LAMINATE_HEAD 2  // head-of-staff laminators
+#define LAMINATE_COM 3  // centcom (admin) laminators
