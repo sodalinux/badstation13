@@ -50,7 +50,7 @@
 	/// This is an associated list
 	var/list/form_fields = list()
 	var/field_counter = 1
-	
+
 	var/laminate = LAMINATE_NONE
 
 /obj/item/paper/Destroy()
@@ -76,6 +76,10 @@
 	N.field_counter = field_counter
 	copy_overlays(N, TRUE)
 	return N
+
+/obj/item/card/id/vv_edit_var(var_name, var_value)
+	. = ..()
+	update_icon_state()  // to make it easier for admins to make cc paper
 
 /**
  * This proc sets the text of the paper and updates the
@@ -117,7 +121,7 @@
 		if(LAMINATE_HEAD)
 			icon_state = "paper_lam_head"
 		if(LAMINATE_COM to INFINITY)
-			icon_state = "paper_lam_gold"
+			icon_state = "paper_lam_com"
 
 /obj/item/paper/verb/rename()
 	set name = "Rename paper"
@@ -216,17 +220,18 @@
 		switch(laminate)
 			if(LAMINATE_NONE)
 				to_chat(user, "You snip the paper into inconcevably small pieces.")
-				QDEL(src)
-			if(LAMINATE_STD)
-				to_chat(user, "You carefully snip the edge of the paper, and slide it out from the lamination."
+				qdel(src)
+			if(LAMINATE_STD, LAMINATE_HEAD)
+				to_chat(user, "You carefully snip the edge of the paper, and slide it out from the lamination.")
 				laminate = LAMINATE_NONE
 				return
-			if(LAMINATE_HEAD to INFINITY)
-				to_chat(user, "You attempt to cut out the paper, but the lamination is too tough!"
-				
+			if(LAMINATE_COM to INFINITY)
+				to_chat(user, "You attempt to cut out the paper, but the lamination is too tough!")
+		update_icon_state()
+
 	if(laminate)
 		return  // the rest of it cant apply to lamination
-	
+
 	else if(istype(P, /obj/item/pen) || istype(P, /obj/item/toy/crayon))
 		if(length(info) >= MAX_PAPER_LENGTH) // Sheet must have less than 1000 charaters
 			to_chat(user, "<span class='warning'>This sheet of paper is full!</span>")
