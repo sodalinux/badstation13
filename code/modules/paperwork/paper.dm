@@ -52,6 +52,7 @@
 	var/field_counter = 1
 
 	var/laminate = LAMINATE_NONE
+	var/papercut = FALSE  // will it damage you on pick up?
 
 /obj/item/paper/Destroy()
 	stamps = null
@@ -79,7 +80,7 @@
 
 /obj/item/card/id/vv_edit_var(var_name, var_value)
 	. = ..()
-	update_icon_state()  // to make it easier for admins to make cc paper
+	update_curstate()  // to make it easier for admins to make cc paper
 
 /**
  * This proc sets the text of the paper and updates the
@@ -109,7 +110,23 @@
 
 // Everyone forgets to call update_icon() after changing the info
 /obj/item/paper/LateInitialize()
-	update_icon()
+	update_curstate()
+
+
+/obj/item/paper/proc/update_curstate()
+	switch(laminate)
+		if(LAMINATE_NONE)
+			armor = initial(armor)
+		if(LAMINATE_STD)
+			// fireproof plastic
+			armor = list("melee" = 0, "bullet" = 0, "laser" = 0, "energy" = 0, "bomb" = 0, "bio" = 100, "rad" = 0, "fire" = 100, "acid" = 0, "stamina" = 0)
+		if(LAMINATE_HEAD)
+			armor = list("melee" = 0, "bullet" = 0, "laser" = 0, "energy" = 0, "bomb" = 0, "bio" = 100, "rad" = 0, "fire" = 100, "acid" = 100, "stamina" = 0)
+		if(LAMINATE_COM to INFINITY)
+			// absolutely impervious plastic
+			armor = list("melee" = 100, "bullet" = 100, "laser" = 100, "energy" = 100, "bomb" = 100, "bio" = 100, "rad" = 100, "fire" = 100, "acid" = 100, "stamina" = 100)
+	update_icon_state()
+
 
 /obj/item/paper/update_icon_state()
 	switch(laminate)
@@ -224,10 +241,11 @@
 			if(LAMINATE_STD, LAMINATE_HEAD)
 				to_chat(user, "You carefully snip the edge of the paper, and slide it out from the lamination.")
 				laminate = LAMINATE_NONE
+				update_curstate()
 				return
 			if(LAMINATE_COM to INFINITY)
 				to_chat(user, "You attempt to cut out the paper, but the lamination is too tough!")
-		update_icon_state()
+		update_curstate()
 
 	if(laminate)
 		return  // the rest of it cant apply to lamination
