@@ -78,7 +78,7 @@
 	copy_overlays(N, TRUE)
 	return N
 
-/obj/item/card/id/vv_edit_var(var_name, var_value)
+/obj/item/paper/vv_edit_var(var_name, var_value)
 	. = ..()
 	update_curstate()  // to make it easier for admins to make cc paper
 
@@ -129,7 +129,7 @@
 
 
 /obj/item/paper/update_icon_state()
-	switch(laminate)
+	switch(laminate + papercut)  // emagged laminator ups the printer one level
 		if(LAMINATE_NONE)
 			if(info && show_written_words)
 				icon_state = "[initial(icon_state)]_words"
@@ -140,6 +140,15 @@
 		if(LAMINATE_COM to INFINITY)
 			icon_state = "paper_lam_com"
 
+// copied from death nettle, emagged laminator makes *incredibly* sharp paper
+/obj/item/paper/pickup(mob/living/user)
+	..()
+	if(!papercut)
+		return FALSE
+	if(prob(50))
+		user.Paralyze(100)
+		to_chat(user, "<span class='userdanger'>You are stunned by [src] as you try picking it up!</span>")
+
 /obj/item/paper/verb/rename()
 	set name = "Rename paper"
 	set category = "Object"
@@ -149,7 +158,7 @@
 		return
 	if(ishuman(usr))
 		var/mob/living/carbon/human/H = usr
-		if(HAS_TRAIT(H, TRAIT_CLUMSY) && prob(25))
+		if((HAS_TRAIT(H, TRAIT_CLUMSY) && prob(25)) || papercut)
 			to_chat(H, "<span class='warning'>You cut yourself on the paper! Ahhhh! Ahhhhh!</span>")
 			H.damageoverlaytemp = 9001
 			H.update_damage_hud()
