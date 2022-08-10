@@ -181,6 +181,13 @@
 
 /obj/item/paper/examine(mob/user)
 	. = ..()
+	switch(laminate)
+		if(LAMINATE_STD)
+			. += "The paper is encased in some cheap plastic."
+		if(LAMINATE_HEAD)
+			. += "The paper is covered in official-looking plastic."
+		if(LAMINATE_COM)
+			. += "The paper seems to glow with radient energy!"
 	if(!in_range(user, src) && !isobserver(user))
 		. += "<span class='warning'>You're too far away to read it!</span>"
 		return
@@ -233,6 +240,12 @@
 	add_fingerprint(user)
 	fire_act(I.return_temperature())
 
+/obj/item/paper/attack_hand(mob/user)
+	if(src.allowed(user))
+		to_chat(user, "Reacting to your id, the paper's lamination melts away.")
+		laminate = LAMINATE_NONE
+		update_curstate()
+
 /obj/item/paper/attackby(obj/item/P, mob/living/user, params)
 	if(burn_paper_product_attackby_check(P, user))
 		SStgui.close_uis(src)
@@ -242,22 +255,19 @@
 	if(istype(P, /obj/item/clipboard) || istype(P, /obj/item/folder))
 		P.attackby(src, user)
 		return
-	if(istype(P, /obj/item/wirecutters))
-		switch(laminate)
-			if(LAMINATE_NONE)
-				to_chat(user, "You snip the paper into inconcevably small pieces.")
-				qdel(src)
-			if(LAMINATE_STD, LAMINATE_HEAD)
-				to_chat(user, "You carefully snip the edge of the paper, and slide it out from the lamination.")
-				laminate = LAMINATE_NONE
-				update_curstate()
-				return
-			if(LAMINATE_COM to INFINITY)
-				to_chat(user, "You attempt to cut out the paper, but the lamination is too tough!")
-		update_curstate()
 
-	if(laminate)
-		return  // the rest of it cant apply to lamination
+	if(istype(P, /obj/item/wirecutters))
+		if(laminate)
+			if(req_access)
+				to_chat(user, "You attempt to cut out the paper, but the lamination is too tough!")
+				return
+			to_chat(user, "You carefully snip the edge of the paper, and slide it out from the lamination.")
+			laminate = LAMINATE_NONE
+			update_curstate()
+			return
+
+		to_chat(user, "You snip the paper into inconcevably small pieces.")
+		qdel(src)
 
 	else if(istype(P, /obj/item/pen) || istype(P, /obj/item/toy/crayon))
 		if(length(info) >= MAX_PAPER_LENGTH) // Sheet must have less than 1000 charaters

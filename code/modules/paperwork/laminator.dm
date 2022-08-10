@@ -23,6 +23,7 @@
 	max_integrity = 300
 	integrity_failure = 100
 	level = LAMINATE_STD  // what type of lamination does this do?
+	var/access_import  // map edit only - gives the paper a certain access lev
 
 /obj/machinery/laminator/attackby(obj/item/I, mob/living/user)
 	if(istype(I, /obj/item/paper) && user.a_intent != INTENT_HARM)
@@ -32,6 +33,7 @@
 			return
 		target.laminate = level
 		target.papercut = obj_flags & EMAGGED  // paper gets papercutty
+		target.access_req = access_import
 		target.update_curstate()
 		target.forceMove(src.loc)  // moves paper on top of laminator, to make it look proccessed
 		src.visible_message("The laminator pings, and ejects the paper.")
@@ -41,10 +43,15 @@
 		fire_act()
 
 /obj/machinery/laminator/emag_act(mob/user)
-	if(!obj_flags & EMAGGED)
-		obj_flags |= EMAGGED
-		to_chat(user, "You scramble the cutting protector.")
-		src.visible_message("The laminator makes a strange vibrating noise.")
+	if(obj_flags & EMAGGED)
+		obj_flags &= ~EMAGGED
+		to_chat(user, "You restore the safety programming.")
+		src.visible_message("The laminator pings.")
+		return
+	obj_flags |= EMAGGED
+	update_icon()
+	to_chat(user, "You scramble the cutting protector.")
+	src.visible_message("The laminator makes a strange vibrating noise.")
 
 /obj/machinery/laminator/head
 	name = "private-use laminator"
