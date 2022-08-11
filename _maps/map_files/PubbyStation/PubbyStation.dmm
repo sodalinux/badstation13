@@ -3122,6 +3122,7 @@
 /obj/effect/turf_decal/tile/red{
 	dir = 4
 	},
+/obj/machinery/laminator/head/sec,
 /turf/open/floor/plasteel/dark,
 /area/crew_quarters/heads/hos)
 "anU" = (
@@ -6962,6 +6963,10 @@
 /obj/item/paper_bin{
 	layer = 2.9
 	},
+/obj/item/stamp/head_of_personnel{
+	pixel_x = -4;
+	pixel_y = 4
+	},
 /turf/open/floor/wood,
 /area/crew_quarters/heads/hop)
 "aCQ" = (
@@ -7499,17 +7504,10 @@
 /turf/open/floor/carpet,
 /area/crew_quarters/heads/hop)
 "aER" = (
-/obj/structure/table/wood,
-/obj/item/stamp/head_of_personnel{
-	pixel_x = -4;
-	pixel_y = 4
-	},
 /obj/item/radio/intercom{
 	pixel_x = 27
 	},
-/obj/item/paper_bin{
-	layer = 2.9
-	},
+/obj/machinery/laminator/head/srv,
 /turf/open/floor/carpet,
 /area/crew_quarters/heads/hop)
 "aES" = (
@@ -14119,6 +14117,7 @@
 /obj/effect/turf_decal/tile/brown{
 	dir = 8
 	},
+/obj/machinery/laminator/head/car,
 /turf/open/floor/plasteel,
 /area/quartermaster/qm)
 "bdH" = (
@@ -21898,9 +21897,6 @@
 /turf/open/floor/plasteel/white,
 /area/crew_quarters/heads/cmo)
 "bEH" = (
-/obj/item/kirbyplants{
-	icon_state = "plant-16"
-	},
 /obj/machinery/light_switch{
 	pixel_y = -22
 	},
@@ -21910,6 +21906,7 @@
 /obj/effect/turf_decal/tile/blue{
 	dir = 8
 	},
+/obj/machinery/laminator/head/med,
 /turf/open/floor/plasteel/white,
 /area/crew_quarters/heads/cmo)
 "bEI" = (
@@ -28986,12 +28983,10 @@
 /turf/open/floor/plating,
 /area/maintenance/department/chapel/monastery)
 "cjP" = (
-/obj/item/kirbyplants{
-	icon_state = "plant-22"
-	},
 /obj/item/radio/intercom{
 	pixel_y = 26
 	},
+/obj/machinery/laminator,
 /turf/open/floor/plasteel/dark,
 /area/library/lounge)
 "cjQ" = (
@@ -47428,6 +47423,14 @@
 	},
 /turf/open/floor/plasteel,
 /area/science/xenobiology)
+"mGv" = (
+/obj/effect/turf_decal/tile/yellow,
+/obj/effect/turf_decal/tile/yellow{
+	dir = 8
+	},
+/obj/machinery/laminator/head/eng,
+/turf/open/floor/plasteel,
+/area/crew_quarters/heads/chief)
 "mHc" = (
 /obj/structure/cable/yellow{
 	icon_state = "0-2"
@@ -49889,6 +49892,13 @@
 /obj/machinery/meter,
 /turf/open/floor/engine,
 /area/engine/engineering)
+"ouc" = (
+/obj/structure/cable/yellow{
+	icon_state = "4-8"
+	},
+/obj/machinery/laminator/head/car,
+/turf/open/floor/plasteel,
+/area/quartermaster/storage)
 "oui" = (
 /obj/machinery/atmospherics/components/unary/vent_pump/on/layer2{
 	dir = 8
@@ -59930,6 +59940,7 @@
 /obj/structure/disposalpipe/segment,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4,
+/obj/machinery/laminator/head,
 /turf/open/floor/plasteel/dark,
 /area/crew_quarters/heads/captain)
 "vov" = (
@@ -62015,6 +62026,13 @@
 	},
 /turf/open/floor/plasteel/dark,
 /area/maintenance/disposal/incinerator)
+"wMf" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/machinery/laminator/head/sci,
+/turf/open/floor/plasteel/dark,
+/area/crew_quarters/heads/hor)
 "wMk" = (
 /obj/machinery/door/airlock/engineering{
 	name = "Gravity Generator";
@@ -92802,7 +92820,7 @@ bPB
 bUK
 bVG
 unf
-bXg
+mGv
 bXZ
 cBV
 cam
@@ -98176,7 +98194,7 @@ psD
 csR
 byH
 bAq
-bBs
+wMf
 bCG
 bDD
 bET
@@ -103542,7 +103560,7 @@ cDa
 cDa
 cDa
 aLg
-wDZ
+ouc
 rJk
 aYw
 aYw

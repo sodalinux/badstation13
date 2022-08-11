@@ -2345,6 +2345,12 @@
 /obj/structure/cable/yellow{
 	icon_state = "4-8"
 	},
+/obj/item/taperecorder{
+	pixel_x = -4
+	},
+/obj/item/radio/off{
+	pixel_y = 3
+	},
 /turf/open/floor/plasteel/dark,
 /area/crew_quarters/heads/hos)
 "agm" = (
@@ -2713,13 +2719,7 @@
 /turf/open/floor/plasteel/dark,
 /area/crew_quarters/heads/hos)
 "ahb" = (
-/obj/structure/table/wood,
-/obj/item/taperecorder{
-	pixel_x = -4
-	},
-/obj/item/radio/off{
-	pixel_y = 3
-	},
+/obj/machinery/laminator/head/sec,
 /turf/open/floor/plasteel/dark,
 /area/crew_quarters/heads/hos)
 "ahc" = (
@@ -12308,6 +12308,10 @@
 /obj/machinery/status_display/supply{
 	pixel_x = 32
 	},
+/obj/item/paper_bin{
+	pixel_x = -3;
+	pixel_y = 7
+	},
 /turf/open/floor/plasteel,
 /area/quartermaster/qm)
 "aQu" = (
@@ -12738,15 +12742,11 @@
 /turf/open/floor/plasteel,
 /area/quartermaster/qm)
 "aRN" = (
-/obj/structure/table,
-/obj/item/paper_bin{
-	pixel_x = -3;
-	pixel_y = 7
-	},
 /obj/effect/turf_decal/tile/brown,
 /obj/effect/turf_decal/tile/brown{
 	dir = 8
 	},
+/obj/machinery/laminator/head/car,
 /turf/open/floor/plasteel,
 /area/quartermaster/qm)
 "aRO" = (
@@ -14883,6 +14883,7 @@
 /obj/structure/table/reinforced,
 /obj/item/flashlight/lamp,
 /obj/effect/turf_decal/tile/neutral,
+/obj/item/clothing/glasses/meson,
 /turf/open/floor/plasteel,
 /area/crew_quarters/heads/chief)
 "aZE" = (
@@ -16697,12 +16698,10 @@
 /obj/effect/turf_decal/tile/neutral{
 	dir = 8
 	},
+/obj/item/lighter,
 /turf/open/floor/plasteel/dark,
 /area/crew_quarters/heads/chief)
 "bei" = (
-/obj/structure/rack,
-/obj/item/lighter,
-/obj/item/clothing/glasses/meson,
 /obj/machinery/button/door{
 	id = "ceprivacy";
 	name = "Privacy Shutters Control";
@@ -16718,6 +16717,7 @@
 /obj/effect/turf_decal/tile/neutral{
 	dir = 8
 	},
+/obj/machinery/laminator/head/eng,
 /turf/open/floor/plasteel/dark,
 /area/crew_quarters/heads/chief)
 "bej" = (
@@ -21012,6 +21012,7 @@
 	pixel_x = -25;
 	pixel_y = 5
 	},
+/obj/machinery/laminator/head/srv,
 /turf/open/floor/carpet/blue,
 /area/crew_quarters/heads/hop)
 "bsN" = (
@@ -21472,6 +21473,7 @@
 	c_tag = "Captain's Office";
 	dir = 8
 	},
+/obj/machinery/laminator/head,
 /turf/open/floor/wood,
 /area/crew_quarters/heads/captain/private)
 "buL" = (
@@ -23434,8 +23436,9 @@
 /turf/open/floor/wood,
 /area/library)
 "bBv" = (
-/obj/structure/chair/comfy/black,
-/obj/effect/landmark/start/assistant,
+/obj/machinery/laminator{
+	pixel_y = 3
+	},
 /turf/open/floor/wood,
 /area/library)
 "bBw" = (
@@ -34812,15 +34815,13 @@
 /turf/open/floor/plasteel/cafeteria,
 /area/crew_quarters/heads/cmo)
 "cnE" = (
-/obj/item/folder/blue,
-/obj/structure/table/glass,
-/obj/item/stamp/cmo,
 /obj/effect/turf_decal/tile/blue{
 	dir = 4
 	},
 /obj/effect/turf_decal/tile/blue{
 	dir = 8
 	},
+/obj/machinery/laminator/head/med,
 /turf/open/floor/plasteel/cafeteria,
 /area/crew_quarters/heads/cmo)
 "cnF" = (
@@ -34828,13 +34829,17 @@
 	pixel_x = 4;
 	pixel_y = -3
 	},
-/obj/item/clothing/glasses/hud/health,
 /obj/structure/cable/yellow{
 	icon_state = "1-2"
 	},
+/obj/item/clothing/glasses/hud/health,
 /obj/structure/table/glass,
 /obj/effect/turf_decal/tile/blue{
 	dir = 4
+	},
+/obj/item/folder/blue{
+	pixel_y = 5;
+	pixel_x = -6
 	},
 /obj/effect/turf_decal/tile/blue{
 	dir = 8
@@ -36812,6 +36817,7 @@
 /obj/effect/turf_decal/tile/blue{
 	dir = 8
 	},
+/obj/item/stamp/cmo,
 /turf/open/floor/plasteel/cafeteria,
 /area/crew_quarters/heads/cmo)
 "ctA" = (
@@ -36928,6 +36934,7 @@
 /obj/effect/turf_decal/stripes/line{
 	dir = 6
 	},
+/obj/machinery/laminator/head/sci,
 /turf/open/floor/plasteel/white,
 /area/crew_quarters/heads/hor)
 "ctW" = (
@@ -70052,6 +70059,10 @@
 	},
 /turf/open/floor/plating,
 /area/maintenance/starboard/fore)
+"qml" = (
+/obj/effect/landmark/start/assistant,
+/turf/open/floor/wood,
+/area/library)
 "qmr" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -78548,6 +78559,7 @@
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4{
 	dir = 4
 	},
+/obj/machinery/laminator/head/car,
 /turf/open/floor/plasteel,
 /area/quartermaster/storage)
 "vpq" = (
@@ -104657,7 +104669,7 @@ bue
 bBv
 bwc
 kOK
-bzE
+qml
 bPT
 bzE
 bzE

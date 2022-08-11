@@ -9344,6 +9344,7 @@
 /obj/effect/turf_decal/tile/neutral/tile_side{
 	dir = 8
 	},
+/obj/machinery/laminator/head/eng,
 /turf/open/floor/plasteel/dark,
 /area/crew_quarters/heads/chief)
 "cex" = (
@@ -19190,6 +19191,14 @@
 /obj/effect/turf_decal/stripes/closeup,
 /turf/open/floor/plasteel/grid/steel,
 /area/science/robotics/mechbay)
+"eni" = (
+/obj/structure/disposalpipe/segment{
+	dir = 8
+	},
+/obj/effect/turf_decal/tile/blue/tile_marquee,
+/obj/machinery/laminator/head/med,
+/turf/open/floor/plasteel/cafeteria,
+/area/crew_quarters/heads/cmo)
 "enn" = (
 /obj/machinery/light/small{
 	dir = 8
@@ -24833,6 +24842,10 @@
 /obj/structure/disposalpipe/segment,
 /turf/open/floor/plasteel,
 /area/quartermaster/sorting)
+"fEg" = (
+/obj/machinery/laminator,
+/turf/open/floor/wood,
+/area/library/lounge)
 "fEj" = (
 /obj/machinery/atmospherics/pipe/simple/cyan/visible,
 /obj/effect/turf_decal/tile/yellow{
@@ -31376,6 +31389,7 @@
 /obj/machinery/light_switch{
 	pixel_y = 24
 	},
+/obj/machinery/laminator/head/srv,
 /turf/open/floor/wood,
 /area/crew_quarters/heads/hop)
 "hgu" = (
@@ -46870,6 +46884,7 @@
 /obj/effect/turf_decal/tile/brown/tile_marquee{
 	dir = 1
 	},
+/obj/machinery/laminator/head/car,
 /turf/open/floor/plasteel/checker,
 /area/quartermaster/storage)
 "kLf" = (
@@ -52169,6 +52184,7 @@
 /obj/structure/cable/yellow{
 	icon_state = "4-8"
 	},
+/obj/machinery/laminator/head/sec,
 /turf/open/floor/wood,
 /area/crew_quarters/heads/hos)
 "lYj" = (
@@ -62411,6 +62427,7 @@
 	pixel_x = 5;
 	pixel_y = 29
 	},
+/obj/machinery/laminator/head/sci,
 /turf/open/floor/plasteel/vaporwave,
 /area/crew_quarters/heads/hor)
 "ozT" = (
@@ -70757,6 +70774,10 @@
 	},
 /turf/open/floor/plasteel/dark,
 /area/security/prison/asteroid/arrival)
+"qDS" = (
+/obj/machinery/laminator/head,
+/turf/open/floor/wood,
+/area/crew_quarters/heads/captain/private)
 "qDV" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4,
@@ -87371,7 +87392,7 @@
 /obj/machinery/light{
 	dir = 1
 	},
-/obj/item/kirbyplants/random,
+/obj/machinery/laminator/head/car,
 /obj/machinery/power/apc/auto_name/west{
 	pixel_x = -24
 	},
@@ -112109,7 +112130,7 @@ wlR
 cRu
 guA
 jeD
-orm
+fEg
 lnM
 neg
 nHD
@@ -131627,7 +131648,7 @@ lmN
 gMk
 lUb
 dKN
-vTg
+eni
 hys
 hku
 ioZ
@@ -148084,7 +148105,7 @@ uth
 gMZ
 hgY
 lSU
-hhk
+qDS
 wfA
 hYE
 ueW

@@ -23586,6 +23586,7 @@
 /obj/effect/spawner/lootdrop/glowstick/lit,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4,
+/obj/machinery/laminator/head/srv,
 /turf/open/floor/plating,
 /area/maintenance/starboard/aft)
 "gyY" = (
@@ -25267,6 +25268,7 @@
 	},
 /obj/effect/turf_decal/tile,
 /obj/machinery/airalarm/directional/east,
+/obj/machinery/laminator/head/med,
 /turf/open/floor/plasteel,
 /area/crew_quarters/heads/cmo)
 "gWB" = (
@@ -25276,6 +25278,7 @@
 /obj/structure/cable/yellow{
 	icon_state = "4-8"
 	},
+/obj/machinery/laminator,
 /turf/open/floor/wood,
 /area/library)
 "gWN" = (
@@ -26164,10 +26167,10 @@
 /turf/open/floor/plasteel/dark,
 /area/maintenance/starboard/fore)
 "hjN" = (
-/obj/item/kirbyplants/random,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4{
 	dir = 6
 	},
+/obj/machinery/laminator/head,
 /turf/open/floor/wood,
 /area/crew_quarters/heads/captain)
 "hjW" = (
@@ -29838,7 +29841,6 @@
 /turf/open/floor/wood,
 /area/crew_quarters/heads/captain)
 "ilr" = (
-/obj/item/kirbyplants/random,
 /obj/effect/turf_decal/tile/brown,
 /obj/effect/turf_decal/tile/brown{
 	dir = 1
@@ -29862,6 +29864,7 @@
 /obj/machinery/atmospherics/components/unary/vent_pump/on/layer2{
 	dir = 8
 	},
+/obj/machinery/laminator/head/car,
 /turf/open/floor/plasteel/dark,
 /area/quartermaster/qm)
 "ilw" = (
@@ -43405,13 +43408,13 @@
 /turf/open/floor/plating,
 /area/maintenance/starboard/fore)
 "mbl" = (
-/obj/item/kirbyplants/random,
 /obj/effect/turf_decal/stripes/line{
 	dir = 1
 	},
 /obj/machinery/camera/autoname{
 	dir = 8
 	},
+/obj/machinery/laminator/head/sci,
 /turf/open/floor/plasteel/white,
 /area/crew_quarters/heads/hor)
 "mbt" = (
@@ -57115,6 +57118,10 @@
 	},
 /turf/open/floor/plating,
 /area/maintenance/fore)
+"qem" = (
+/obj/machinery/laminator/head/eng,
+/turf/open/floor/carpet/orange,
+/area/crew_quarters/heads/chief)
 "qeA" = (
 /obj/structure/cable/yellow{
 	icon_state = "4-8"
@@ -68316,6 +68323,7 @@
 	pixel_x = 1;
 	pixel_y = -25
 	},
+/obj/machinery/laminator/head/car,
 /turf/open/floor/plasteel,
 /area/quartermaster/storage)
 "tGC" = (
@@ -69131,6 +69139,7 @@
 	},
 /obj/effect/turf_decal/tile/red,
 /obj/effect/turf_decal/tile/neutral,
+/obj/machinery/laminator/head/sec,
 /turf/open/floor/plasteel/dark,
 /area/crew_quarters/heads/hos)
 "tRo" = (
@@ -83390,6 +83399,7 @@
 /obj/structure/cable/yellow{
 	icon_state = "4-8"
 	},
+/obj/machinery/laminator/head/srv,
 /turf/open/floor/wood,
 /area/crew_quarters/heads/hop)
 "ybQ" = (
@@ -108871,7 +108881,7 @@ wLX
 gMF
 orw
 cWH
-mvn
+qem
 hlV
 iGg
 hzG

@@ -48,6 +48,16 @@
 /obj/item/bedsheet/medical,
 /turf/open/floor/mineral/titanium/blue,
 /area/centcom/evac)
+"cp" = (
+/obj/effect/turf_decal/tile/red{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/red{
+	dir = 4
+	},
+/obj/machinery/laminator/com,
+/turf/open/floor/plasteel/dark,
+/area/centcom/evac)
 "cs" = (
 /obj/structure/window{
 	dir = 1
@@ -62,6 +72,20 @@
 	},
 /turf/open/floor/mineral/titanium/blue,
 /area/centcom/evac)
+"cQ" = (
+/obj/machinery/laminator/com,
+/obj/effect/turf_decal/tile/neutral{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/neutral,
+/obj/effect/turf_decal/tile/neutral{
+	dir = 4
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 8
+	},
+/turf/open/floor/plasteel/dark,
+/area/centcom/ferry)
 "cU" = (
 /obj/structure/window{
 	dir = 1
@@ -72,6 +96,10 @@
 /obj/structure/closet/wardrobe/white,
 /turf/open/floor/mineral/titanium/blue,
 /area/centcom/evac)
+"cX" = (
+/obj/machinery/laminator/com,
+/turf/open/floor/plasteel/grimy,
+/area/centcom/control)
 "de" = (
 /obj/structure/table/reinforced,
 /obj/item/paper_bin,
@@ -85,6 +113,20 @@
 "dV" = (
 /obj/machinery/door/window/westleft,
 /turf/open/floor/mineral/titanium/blue,
+/area/centcom/evac)
+"dW" = (
+/obj/effect/turf_decal/tile/neutral{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/neutral,
+/obj/effect/turf_decal/tile/neutral{
+	dir = 4
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 8
+	},
+/obj/machinery/laminator/com,
+/turf/open/floor/plasteel/dark,
 /area/centcom/evac)
 "er" = (
 /obj/structure/table,
@@ -1745,9 +1787,7 @@
 /turf/open/floor/plasteel/grimy,
 /area/centcom/control)
 "kJ" = (
-/obj/item/kirbyplants{
-	icon_state = "plant-22"
-	},
+/obj/machinery/laminator/com,
 /obj/machinery/airalarm{
 	dir = 8;
 	pixel_x = 24
@@ -3507,6 +3547,7 @@
 /obj/effect/turf_decal/tile/neutral{
 	dir = 8
 	},
+/obj/machinery/laminator/com,
 /turf/open/floor/plasteel/dark,
 /area/centcom/ferry)
 "ok" = (
@@ -55034,7 +55075,7 @@ rw
 sA
 tA
 oB
-uV
+cQ
 rz
 wz
 ws
@@ -59920,7 +59961,7 @@ nq
 iu
 vK
 wD
-km
+cX
 nN
 yv
 im
@@ -66870,7 +66911,7 @@ BN
 Cf
 Cc
 Cc
-Cc
+dW
 Yn
 OP
 OP
@@ -67381,7 +67422,7 @@ uB
 At
 AW
 BP
-Cf
+cp
 Cc
 Dg
 DA

@@ -428,9 +428,7 @@
 	pixel_x = 24;
 	pixel_y = 10
 	},
-/obj/structure/table/wood,
-/obj/item/radio/off,
-/obj/item/taperecorder,
+/obj/machinery/laminator/head/sec,
 /turf/open/floor/carpet/red,
 /area/crew_quarters/heads/hos)
 "abl" = (
@@ -1042,11 +1040,13 @@
 	pixel_x = -3;
 	pixel_y = 7
 	},
+/obj/item/taperecorder,
 /turf/open/floor/carpet/red,
 /area/crew_quarters/heads/hos)
 "acS" = (
 /obj/item/book/manual/wiki/security_space_law,
 /obj/structure/table/wood,
+/obj/item/radio/off,
 /turf/open/floor/carpet/red,
 /area/crew_quarters/heads/hos)
 "acV" = (
@@ -16435,14 +16435,10 @@
 /turf/open/floor/carpet/purple,
 /area/crew_quarters/heads/hor)
 "bxl" = (
-/obj/structure/rack,
-/obj/item/circuitboard/aicore{
-	pixel_x = -2;
-	pixel_y = 4
-	},
 /obj/effect/turf_decal/stripes/line{
 	dir = 9
 	},
+/obj/machinery/laminator/head/sci,
 /turf/open/floor/plasteel/white,
 /area/crew_quarters/heads/hor)
 "bxm" = (
@@ -16531,6 +16527,7 @@
 /obj/effect/turf_decal/tile/brown{
 	dir = 8
 	},
+/obj/item/folder/yellow,
 /turf/open/floor/plasteel,
 /area/quartermaster/qm)
 "bye" = (
@@ -16556,6 +16553,10 @@
 /obj/effect/turf_decal/tile/brown{
 	dir = 8
 	},
+/obj/item/pen{
+	pixel_x = 4;
+	pixel_y = 4
+	},
 /turf/open/floor/plasteel,
 /area/quartermaster/qm)
 "byh" = (
@@ -16577,17 +16578,11 @@
 /turf/open/floor/plating,
 /area/security/checkpoint/science)
 "byl" = (
-/obj/structure/table,
-/obj/item/folder/yellow,
-/obj/item/pen{
-	pixel_x = 4;
-	pixel_y = 4
-	},
-/obj/item/pen/red,
 /obj/effect/turf_decal/tile/brown,
 /obj/effect/turf_decal/tile/brown{
 	dir = 8
 	},
+/obj/machinery/laminator/head/car,
 /turf/open/floor/plasteel,
 /area/quartermaster/qm)
 "byn" = (
@@ -16648,6 +16643,10 @@
 /obj/effect/turf_decal/stripes/line{
 	dir = 8
 	},
+/obj/item/circuitboard/aicore{
+	pixel_x = -2;
+	pixel_y = 4
+	},
 /turf/open/floor/plasteel/white,
 /area/crew_quarters/heads/hor)
 "byt" = (
@@ -16691,7 +16690,6 @@
 /obj/effect/turf_decal/tile/brown{
 	dir = 4
 	},
-/obj/item/kirbyplants/random,
 /turf/open/floor/plasteel,
 /area/quartermaster/qm)
 "byD" = (
@@ -23748,6 +23746,7 @@
 /obj/machinery/keycard_auth{
 	pixel_y = -28
 	},
+/obj/machinery/laminator/head/eng,
 /turf/open/floor/plasteel,
 /area/crew_quarters/heads/chief)
 "cep" = (
@@ -30900,7 +30899,7 @@
 /obj/effect/turf_decal/bot,
 /obj/machinery/camera{
 	c_tag = "Incinerator";
-	network = list("ss13", "turbine")
+	network = list("ss13","turbine")
 	},
 /turf/open/floor/plasteel,
 /area/maintenance/disposal/incinerator)
@@ -31180,6 +31179,13 @@
 	},
 /turf/open/floor/plating,
 /area/maintenance/starboard/aft)
+"dwx" = (
+/obj/structure/cable/yellow{
+	icon_state = "4-8"
+	},
+/obj/machinery/laminator/head/srv,
+/turf/open/floor/carpet/royalblue,
+/area/crew_quarters/heads/hop)
 "dwz" = (
 /obj/effect/turf_decal/tile/red{
 	dir = 4
@@ -40641,11 +40647,6 @@
 /turf/open/floor/plasteel,
 /area/security/prison)
 "jTh" = (
-/obj/structure/table/glass,
-/obj/item/paper_bin{
-	pixel_x = -2;
-	pixel_y = 5
-	},
 /obj/effect/turf_decal/tile/blue{
 	dir = 4
 	},
@@ -40655,6 +40656,7 @@
 /obj/machinery/atmospherics/components/unary/vent_pump/on/layer2{
 	dir = 4
 	},
+/obj/machinery/laminator/head/med,
 /turf/open/floor/plasteel/cafeteria,
 /area/crew_quarters/heads/cmo)
 "jTn" = (
@@ -40810,6 +40812,10 @@
 /obj/structure/disposalpipe/trunk,
 /turf/open/floor/plasteel/grimy,
 /area/security/detectives_office)
+"jZq" = (
+/obj/machinery/laminator/head,
+/turf/open/floor/wood,
+/area/crew_quarters/heads/captain)
 "jZP" = (
 /obj/effect/spawner/structure/window/reinforced,
 /turf/open/floor/plating,
@@ -42293,6 +42299,10 @@
 	dir = 8
 	},
 /mob/living/simple_animal/pet/cat/Runtime,
+/obj/item/paper_bin{
+	pixel_x = -2;
+	pixel_y = 5
+	},
 /turf/open/floor/plasteel/cafeteria,
 /area/crew_quarters/heads/cmo)
 "kRN" = (
@@ -46631,6 +46641,10 @@
 /obj/machinery/atmospherics/pipe/layer_manifold,
 /turf/open/floor/plating,
 /area/maintenance/solars/port/fore)
+"nDg" = (
+/obj/machinery/laminator,
+/turf/open/floor/wood,
+/area/library)
 "nDm" = (
 /obj/machinery/door/airlock/security/glass{
 	name = "Long-Term Cell 1";
@@ -59156,6 +59170,7 @@
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2{
 	dir = 8
 	},
+/obj/machinery/laminator/head/car,
 /turf/open/floor/plasteel,
 /area/quartermaster/storage)
 "wop" = (
@@ -88676,7 +88691,7 @@ bmo
 bnR
 bpe
 bqB
-bqq
+dwx
 btD
 buO
 bwk
@@ -94319,7 +94334,7 @@ aYF
 aZV
 iXl
 iLG
-iXl
+jZq
 ben
 bfE
 lIK
@@ -105872,7 +105887,7 @@ aIv
 aJR
 aJR
 aIt
-aIt
+nDg
 aPd
 aIt
 aRO

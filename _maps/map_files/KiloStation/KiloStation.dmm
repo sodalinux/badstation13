@@ -7189,7 +7189,7 @@
 	icon_state = "1-8"
 	},
 /mob/living/simple_animal/chicken/turkey{
-	atmos_requirements = list("min_oxy" = 0, "max_oxy" = 0, "min_tox" = 0, "max_tox" = 0, "min_co2" = 0, "max_co2" = 0, "min_n2" = 0, "max_n2" = 0);
+	atmos_requirements = list("min_oxy"=0,"max_oxy"=0,"min_tox"=0,"max_tox"=0,"min_co2"=0,"max_co2"=0,"min_n2"=0,"max_n2"=0);
 	desc = "A veteran of Nanotrasen's Animal Experimentation Program that attempted to replicate the organic space suit that some hostile entities are known to have exhibited, Tom now serves Nanotrasen as the mascot of the Exploration Crew.";
 	health = 200;
 	maxHealth = 200;
@@ -8988,7 +8988,7 @@
 /obj/item/reagent_containers/food/drinks/beer{
 	desc = "A station exclusive. Consumption may result in seizures, blindness, drunkenness, or even death.";
 	icon_state = "beer";
-	list_reagents = list(/datum/reagent/consumable/ethanol/thirteenloko = 30);
+	list_reagents = list(/datum/reagent/consumable/ethanol/thirteenloko=30);
 	name = "Kilo-Kocktail";
 	pixel_x = 5;
 	pixel_y = 5
@@ -16702,6 +16702,7 @@
 /obj/structure/disposalpipe/segment{
 	dir = 5
 	},
+/obj/structure/displaycase/labcage,
 /turf/open/floor/plasteel/showroomfloor,
 /area/crew_quarters/heads/hor)
 "aAv" = (
@@ -26551,9 +26552,7 @@
 	dir = 8
 	},
 /obj/effect/turf_decal/tile/blue,
-/obj/item/kirbyplants{
-	icon_state = "plant-10"
-	},
+/obj/machinery/laminator/head/med,
 /obj/effect/turf_decal/stripes/corner{
 	dir = 8
 	},
@@ -26969,10 +26968,6 @@
 /obj/effect/turf_decal/tile/red,
 /obj/item/kirbyplants{
 	icon_state = "plant-05"
-	},
-/obj/structure/noticeboard{
-	dir = 8;
-	pixel_x = 32
 	},
 /obj/item/paper/monitorkey,
 /obj/machinery/camera{
@@ -32179,7 +32174,7 @@
 "aXN" = (
 /obj/machinery/igniter/incinerator_toxmix,
 /mob/living/simple_animal/chicken{
-	atmos_requirements = list("min_oxy" = 0, "max_oxy" = 0, "min_tox" = 0, "max_tox" = 1, "min_co2" = 0, "max_co2" = 0, "min_n2" = 0, "max_n2" = 0);
+	atmos_requirements = list("min_oxy"=0,"max_oxy"=0,"min_tox"=0,"max_tox"=1,"min_co2"=0,"max_co2"=0,"min_n2"=0,"max_n2"=0);
 	desc = "A timeless classic.";
 	name = "Kentucky"
 	},
@@ -37554,13 +37549,13 @@
 /obj/effect/turf_decal/tile/neutral{
 	dir = 1
 	},
-/obj/structure/displaycase/labcage,
 /obj/effect/turf_decal/box,
 /obj/machinery/light,
 /obj/machinery/firealarm{
 	dir = 1;
 	pixel_y = -26
 	},
+/obj/machinery/laminator/head/sci,
 /turf/open/floor/plasteel/dark,
 /area/crew_quarters/heads/hor)
 "bfC" = (
@@ -39096,6 +39091,10 @@
 /obj/item/radio/intercom{
 	pixel_y = 22
 	},
+/obj/item/toy/figure/qm{
+	pixel_x = 4;
+	pixel_y = 6
+	},
 /turf/open/floor/plasteel/dark,
 /area/quartermaster/qm)
 "bhN" = (
@@ -39454,6 +39453,7 @@
 /obj/effect/turf_decal/tile/yellow{
 	dir = 1
 	},
+/obj/item/clipboard,
 /turf/open/floor/plasteel,
 /area/quartermaster/qm)
 "bin" = (
@@ -39766,16 +39766,11 @@
 /turf/open/floor/plasteel/dark,
 /area/quartermaster/miningoffice)
 "biI" = (
-/obj/structure/table,
 /obj/effect/turf_decal/tile/neutral,
 /obj/effect/turf_decal/tile/neutral{
 	dir = 4
 	},
-/obj/item/clipboard,
-/obj/item/toy/figure/qm{
-	pixel_x = 4;
-	pixel_y = 6
-	},
+/obj/machinery/laminator/head/car,
 /turf/open/floor/plasteel,
 /area/quartermaster/qm)
 "biJ" = (
@@ -40756,6 +40751,7 @@
 	dir = 8;
 	pixel_x = 28
 	},
+/obj/machinery/laminator/head/car,
 /turf/open/floor/plasteel/dark,
 /area/quartermaster/storage)
 "bjW" = (
@@ -60771,11 +60767,12 @@
 "bOz" = (
 /obj/structure/closet/secure_closet/engineering_chief,
 /obj/effect/turf_decal/delivery,
-/obj/structure/extinguisher_cabinet{
-	pixel_x = 24
-	},
 /obj/effect/turf_decal/stripes/line,
 /obj/machinery/light,
+/obj/structure/noticeboard{
+	dir = 8;
+	pixel_x = 32
+	},
 /turf/open/floor/plasteel/dark,
 /area/crew_quarters/heads/chief)
 "bOA" = (
@@ -81756,6 +81753,7 @@
 /obj/structure/cable/yellow{
 	icon_state = "4-8"
 	},
+/obj/machinery/laminator/head/sec,
 /turf/open/floor/plasteel/dark,
 /area/crew_quarters/heads/hos)
 "cuK" = (
@@ -88780,6 +88778,10 @@
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer4{
 	dir = 1
 	},
+/obj/machinery/laminator{
+	pixel_y = 4;
+	pixel_x = 1
+	},
 /turf/open/floor/carpet/green,
 /area/library)
 "cIg" = (
@@ -88968,9 +88970,7 @@
 /turf/open/floor/plasteel/dark,
 /area/teleporter)
 "cIt" = (
-/obj/structure/chair/comfy/brown{
-	dir = 4
-	},
+/obj/machinery/laminator/head,
 /obj/machinery/light{
 	dir = 1
 	},
@@ -97777,6 +97777,10 @@
 /obj/structure/grille/broken,
 /turf/open/space/basic,
 /area/space)
+"mhb" = (
+/obj/machinery/laminator/head/srv,
+/turf/open/floor/wood,
+/area/crew_quarters/heads/hop)
 "mix" = (
 /obj/effect/spawner/structure/window/reinforced,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2,
@@ -97897,6 +97901,13 @@
 	},
 /turf/open/floor/plasteel/showroomfloor,
 /area/science/xenobiology)
+"mth" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/closed/wall,
+/turf/open/floor/plating{
+	icon_state = "panelscorched"
+	},
+/area/maintenance/starboard/aft)
 "mti" = (
 /obj/structure/lattice/catwalk,
 /obj/structure/cable{
@@ -100950,6 +100961,12 @@
 /obj/effect/turf_decal/box,
 /turf/open/floor/plasteel,
 /area/hallway/primary/aft)
+"ueu" = (
+/obj/structure/extinguisher_cabinet{
+	pixel_x = 24
+	},
+/turf/closed/wall/r_wall,
+/area/crew_quarters/heads/chief)
 "uhb" = (
 /obj/machinery/door/airlock/maintenance{
 	req_access_txt = "12";
@@ -101017,6 +101034,10 @@
 	icon_state = "platingdmg1"
 	},
 /area/science/shuttledock)
+"upM" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/closed/wall/r_wall,
+/area/maintenance/starboard/aft)
 "usI" = (
 /obj/effect/turf_decal/stripes/line{
 	dir = 2
@@ -101660,6 +101681,10 @@
 /obj/effect/decal/cleanable/dirt/dust,
 /turf/open/floor/plating,
 /area/quartermaster/exploration_dock)
+"wfX" = (
+/obj/machinery/laminator/head/eng,
+/turf/open/floor/plasteel,
+/area/crew_quarters/heads/chief)
 "wgr" = (
 /obj/structure/sign/warning/docking,
 /turf/closed/wall/rust,
@@ -131281,7 +131306,7 @@ bnP
 atj
 avV
 bIo
-bKm
+mhb
 atr
 bPO
 arD
@@ -139521,11 +139546,11 @@ bmp
 cfw
 awX
 awX
-awX
+wfX
 aPM
 ckB
 bOz
-awX
+ueu
 aya
 bZt
 bZu
@@ -139776,8 +139801,8 @@ caM
 cjz
 bNv
 cfC
-bOb
-bGH
+mth
+upM
 awV
 awX
 awV

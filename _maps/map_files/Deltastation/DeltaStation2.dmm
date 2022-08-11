@@ -16438,6 +16438,7 @@
 /obj/effect/turf_decal/tile/purple{
 	dir = 8
 	},
+/obj/machinery/laminator/head/car,
 /turf/open/floor/plasteel,
 /area/quartermaster/storage)
 "aZb" = (
@@ -16467,7 +16468,7 @@
 /turf/open/floor/plasteel,
 /area/quartermaster/qm)
 "aZd" = (
-/obj/item/kirbyplants/random,
+/obj/machinery/laminator/head/car,
 /obj/machinery/light,
 /obj/machinery/newscaster{
 	pixel_y = -32
@@ -21572,9 +21573,6 @@
 /turf/open/floor/carpet/red,
 /area/crew_quarters/heads/hos)
 "bmy" = (
-/obj/structure/table/wood,
-/obj/item/folder/red,
-/obj/item/pen,
 /obj/machinery/button/door{
 	id = "hosprivacy";
 	name = "Privacy Control";
@@ -21606,6 +21604,7 @@
 /obj/effect/turf_decal/tile/neutral{
 	dir = 8
 	},
+/obj/machinery/laminator/head/sec,
 /turf/open/floor/plasteel/dark,
 /area/crew_quarters/heads/hos)
 "bmz" = (
@@ -35579,7 +35578,7 @@
 /turf/open/floor/plasteel/dark,
 /area/crew_quarters/heads/chief)
 "bYw" = (
-/obj/item/kirbyplants/random,
+/obj/machinery/laminator/head/eng,
 /obj/machinery/light_switch{
 	pixel_x = 26;
 	pixel_y = -26
@@ -38693,7 +38692,7 @@
 /turf/open/floor/wood,
 /area/crew_quarters/heads/captain/private)
 "cgv" = (
-/obj/item/kirbyplants/random,
+/obj/machinery/laminator/head,
 /obj/machinery/firealarm{
 	dir = 1;
 	pixel_y = -26
@@ -41114,7 +41113,7 @@
 /obj/machinery/status_display/ai{
 	pixel_x = 32
 	},
-/obj/item/kirbyplants/random,
+/obj/machinery/laminator/head/srv,
 /turf/open/floor/wood,
 /area/crew_quarters/heads/hop)
 "cmD" = (
@@ -58060,6 +58059,7 @@
 /obj/effect/turf_decal/stripes/line{
 	dir = 4
 	},
+/obj/machinery/laminator/head/sci,
 /turf/open/floor/plasteel,
 /area/crew_quarters/heads/hor)
 "dmW" = (
@@ -61775,7 +61775,7 @@
 /turf/open/floor/plasteel/white,
 /area/crew_quarters/heads/cmo)
 "dAf" = (
-/obj/item/kirbyplants/random,
+/obj/machinery/laminator/head/med,
 /obj/structure/cable/yellow{
 	icon_state = "0-8"
 	},
@@ -74352,6 +74352,10 @@
 	},
 /turf/open/floor/plasteel,
 /area/quartermaster/storage)
+"fLE" = (
+/obj/machinery/laminator,
+/turf/open/floor/wood,
+/area/library)
 "fMa" = (
 /obj/effect/turf_decal/tile/neutral{
 	dir = 1
@@ -102202,6 +102206,7 @@
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4{
 	dir = 4
 	},
+/obj/item/pen,
 /turf/open/floor/carpet/red,
 /area/crew_quarters/heads/hos)
 "rwR" = (
@@ -151711,7 +151716,7 @@ caG
 chX
 cxV
 fxj
-chP
+fLE
 cnV
 cpz
 cqU
