@@ -23,7 +23,6 @@
 	max_integrity = 300
 	integrity_failure = 100
 	level = LAMINATE_STD  // what type of lamination does this do?
-	var/access_import  // access level to unlock the lamination (heads only)
 
 /obj/machinery/laminator/attackby(obj/item/I, mob/living/user)
 	if(istype(I, /obj/item/paper) && user.a_intent != INTENT_HARM)
@@ -33,7 +32,7 @@
 			return
 		target.laminate = level
 		target.papercut = obj_flags & EMAGGED  // paper gets papercutty
-		target.req_one_access = access_import
+		target.req_one_access = req_one_access
 		target.update_curstate()
 		target.forceMove(src.loc)  // moves paper on top of laminator, to make it look proccessed
 		src.visible_message("The laminator pings, and ejects the paper.")
