@@ -40,7 +40,8 @@ SUBSYSTEM_DEF(communications)
 				var/obj/item/paper/P = new /obj/item/paper(C.loc)
 				P.name = "paper - '[sending.title]'"
 				P.info = sending.content
-				P.update_icon()
+				P.laminate = LAMINATE_COM
+				P.update_curstate()
 
 #undef COMMUNICATION_COOLDOWN
 #undef COMMUNICATION_COOLDOWN_AI

@@ -241,7 +241,9 @@
 	fire_act(I.return_temperature())
 
 /obj/item/paper/attack_hand(mob/user)
-	if(src.allowed(user))
+	if(!laminate)
+		return ..()
+	if(src.allowed(user) && laminate < LAMINATE_COM)  // centcom level lamination is impervious
 		to_chat(user, "Reacting to your id, the paper's lamination melts away.")
 		laminate = LAMINATE_NONE
 		update_curstate()
