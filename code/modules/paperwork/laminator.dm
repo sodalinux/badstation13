@@ -23,7 +23,7 @@
 	max_integrity = 300
 	integrity_failure = 100
 	level = LAMINATE_STD  // what type of lamination does this do?
-	var/access_import  // map edit only - gives the paper a certain access lev
+	var/access_import  // access level to unlock the lamination (heads only)
 
 /obj/machinery/laminator/attackby(obj/item/I, mob/living/user)
 	if(istype(I, /obj/item/paper) && user.a_intent != INTENT_HARM)
@@ -55,12 +55,48 @@
 
 /obj/machinery/laminator/head
 	name = "private-use laminator"
-	desc = "A fancy high-end laminator, for use by station officials."
+	desc = "A fancy high-end laminator, for use by station captains."
 	icon_state = "laminator_head"
 	level = LAMINATE_HEAD
+	access_req_one = list(ACCESS_CAPTAIN)
+	var/owner
+
+/obj/machinery/laminator/head/Initialize()
+	access_req_one += list(owner)  // makes the access thing require better
+
+/obj/machinery/laminator/head/sec
+	name = "head of security laminator"
+	desc = "To make your arrest warrents more stylish."
+	owner = ACCESS_HOS
+
+/obj/machinery/laminator/head/eng
+	name = "cheif engineer laminator"
+	desc = "Relaminate the sm."
+	owner = ACCESS_CE
+
+/obj/machinery/laminator/head/med
+	name = "cheif medical officer laminator"
+	desc = "9 out of 10 doctors reccomend!"  // yes im reusing this from my other pr
+	owner = ACCESS_CMO
+
+/obj/machinery/laminator/head/sci
+	name = "research director laminator"
+	desc = "For the good of all of us (except the ones who are dead)."  // Portal - Still Alive
+	owner = ACCESS_RD
+
+/obj/machinery/laminator/head/srv
+	name = "head of personell laminator"
+	desc = "Bureocracy is a HoP's best friend."
+	owner = ACCESS_HOP
+
+/obj/machinery/laminator/head/car
+	name = "quartermaster laminator"
+	desc = "Helps you keep track of who buys what, in case of emergency."
+	owner = ACCESS_QM
 
 /obj/machinery/laminator/com  // exclusive to centcom hq
 	name = "mystical laminator"
 	desc = "The highest-quality photocopier one could buy. Some claim it prints gold."
 	icon_state = "laminator_head"
 	level = LAMINATE_COM
+	owner = ACCESS_CENT_GENERAL  // nobody on station is opening this
