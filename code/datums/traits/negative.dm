@@ -689,3 +689,46 @@
 /datum/quirk/phobia/remove()
 	var/mob/living/carbon/human/H = quirk_holder
 	H.cure_trauma_type(/datum/brain_trauma/mild/phobia, TRAUMA_RESILIENCE_ABSOLUTE)
+
+/datum/quirk/forget
+	name = "Forgetfulness"
+	desc = "You seem to lose items around you!"
+	value = -2
+	gain_text = "<span class='danger'>You feel like you're forgetting something.</span>"
+	lose_text = "<span class='notice'>You remembered what you were forgetting.</span>"
+	medical_record_text = "Patient frequently forgets about items around them."
+	process = TRUE
+	var/last_forget  // how long since an item was "forgot"
+	var/static/cooldown_len = 2 MINUTES  // how long will the cooldown last
+
+/datum/quirk/forget/process(delta_time)
+	if(world.time > last_forget + cooldown_len && DT_PROB(10, delta_time))
+		var/mob/living/carbon/human/whodis = quirk_holder
+		if(!whodis)
+			return
+
+		var/list/affected = oview(2, whodis)
+		if(whodis.contents)
+			for(var/obj/item/localitem in whodis.get_contents())
+				affected += localitem
+
+
+		var/i = 0
+		var/pick_item
+		while(i < 10)
+			pick_item = pick(affected)
+			to_chat(whodis, pick_item)
+			if(!isturf(pick_item))
+				break
+
+		if(!pick_item || isturf(pick_item))  // how??
+			return
+		var/image/A = image('icons/effects/effects.dmi',pick_item,"nothing")
+		A.name = "..."
+		A.desc = "You feel like something might've been here before.."
+		A.override = 1
+
+		if(whodis.client)
+			whodis.client.images |= A
+			QDEL_IN(A, 60 SECONDS)
+		last_forget = world.time
