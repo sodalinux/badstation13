@@ -884,3 +884,35 @@ GLOBAL_LIST_INIT(cable_coil_recipes, list (new/datum/stack_recipe("cable restrai
 /obj/item/stack/cable_coil/cut/random
 	cable_color = null
 	color = "#ffffff"
+
+
+/obj/item/stack/cable_coil/synth
+	name = "wire synthesizer"
+	desc = "A wire synthesizer that can generate wires constantly."
+	materials = list()
+	grind_results = list()  // no infinite mats exploit :)
+	merge_type = null
+	var/generate_rate = 2
+	var/synth_on
+
+
+/obj/item/stack/cable_coil/synth/update_icon()
+	return
+
+/obj/item/stack/cable_coil/synth/Initialize(mapload, new_amount, param_color)
+	. = ..()
+	START_PROCESSING(SSobj, src)
+	synth_on = TRUE
+
+/obj/item/stack/cable_coil/synth/attack_self(mob/user)  // no infinite cable cuffs :)
+	return
+
+/obj/item/stack/cable_coil/synth/process(delta_time)
+	amount = min(max_amount, amount * delta_time)
+
+/obj/item/mop/advanced/Destroy()
+	STOP_PROCESSING(SSobj, src)
+	return ..()
+
+/obj/item/stack/cable_coil/synth/grind_requirements()
+	return
