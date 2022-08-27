@@ -218,6 +218,23 @@
 		if(7) //command
 			return "Command"
 
+/proc/get_region_access_code(name)  // reverse above
+	switch(code)
+		if(ACCOUNT_CIV, "General")
+			return 1
+		if(ACCOUNT_SEC, "Security")
+			return 2
+		if(ACCOUNT_MED, "Medbay")
+			return 3
+		if(ACCOUNT_SCI, "Research")
+			return 4
+		if(ACCOUNT_ENG, "Engineering")
+			return 5
+		if(ACCOUNT_CAR, "Supply")
+			return 6
+		if("Command")
+			return 7
+
 /proc/get_access_desc(A)
 	switch(A)
 		if(ACCESS_CARGO)
