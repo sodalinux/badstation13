@@ -219,7 +219,7 @@
 			return "Command"
 
 /proc/get_region_access_code(name)  // reverse above
-	switch(code)
+	switch(name)
 		if(ACCOUNT_CIV, "General")
 			return 1
 		if(ACCOUNT_SEC, "Security")

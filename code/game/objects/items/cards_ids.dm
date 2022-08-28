@@ -294,16 +294,16 @@
 	else
 		. += "<span class='info'>There is no registered account linked to this card. Alt-Click to add one.</span>"
 
+	var/list/access_list = list()
 	var/dept_name = hud_state == JOB_HUD_UNKNOWN ? null : get_department_by_hud(hud_state)
 
-	var/list/access_list = list()
-	if(active_department)
-		active_department = get_region_access_code(dept_name)
+	if(dept_name)
+		var/active_department = get_region_access_code(dept_name)
 
-		if(hud_state in (JOB_HUD_RAWCOMMAND, JOB_HUD_CAPTAIN, JOB_HUD_ACTINGCAPTAIN))  // manually setting captain to allaccess
+		if(hud_state in list(JOB_HUD_RAWCOMMAND, JOB_HUD_CAPTAIN, JOB_HUD_ACTINGCAPTAIN))  // manually setting captain to allaccess
 			active_department = 7
 
-		var/access_list = get_region_accesses(active_department)
+		access_list = get_region_accesses(active_department)
 
 	var/no_home = TRUE
 	var/list/extra_dept = list()
@@ -321,7 +321,7 @@
 	if(extra_dept)
 		. += "This card has additional access to [join_english(arglist(extra_dept))]"
 	if(no_home)
-		. += "This card has no access to their main department of [dept_name]!"
+		. += "This card has no access to their main department of [dept_name || "NONE" ]!"
 
 
 
