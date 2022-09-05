@@ -17,6 +17,7 @@
 	var/export_price = 0					//Cargo export price.
 	var/list/research_costs = list()					//Point cost to research. type = amount
 	var/category = "Misc"				//Category
+	var/list/announce_channel = LAZYINITLIST()  // if defined, these channels will be notified of research
 
 /datum/techweb_node/error_node
 	id = "ERROR"

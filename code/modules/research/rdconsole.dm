@@ -38,6 +38,9 @@ Nothing else in the console has ID requirements.
 	var/id_cache_seq = 1
 	var/compact = TRUE
 
+	var/obj/item/radio/radio
+	var/radio_key = .obj/item/encryptionkey/debug  // 0 channel permission issues
+
 	var/research_control = TRUE
 
 /proc/CallMaterialName(ID)
@@ -82,6 +85,11 @@ Nothing else in the console has ID requirements.
 	stored_research.consoles_accessing[src] = TRUE
 	SyncRDevices()
 
+	radio = new(src)
+	radio.keyslot = new radio_key
+	radio.listening = 0
+	radio.recalculateChannels()
+
 /obj/machinery/computer/rdconsole/Destroy()
 	if(stored_research)
 		stored_research.consoles_accessing -= src
@@ -100,6 +108,7 @@ Nothing else in the console has ID requirements.
 	if(d_disk)
 		d_disk.forceMove(get_turf(src))
 		d_disk = null
+	QDEL(radio)
 	return ..()
 
 /obj/machinery/computer/rdconsole/attackby(obj/item/D, mob/user, params)
@@ -143,6 +152,11 @@ Nothing else in the console has ID requirements.
 			SSblackbox.record_feedback("associative", "science_techweb_unlock", 1, list("id" = "[id]", "name" = TN.display_name, "price" = "[json_encode(price)]", "time" = SQLtime()))
 		if(stored_research.research_node_id(id))
 			say("Successfully researched [TN.display_name].")
+			if(LAZYLEN(TN.announce_channel))
+				var/ext_message = "Science department has researched [TN.display_name]."
+				for(var/x in TN.announce_channel)
+					radio.talk_into(src, ext_message, x)
+
 			var/logname = "Unknown"
 			if(isAI(user))
 				logname = "AI: [user.name]"
