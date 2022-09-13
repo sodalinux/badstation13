@@ -65,3 +65,14 @@ micro-manipulator, console screen, beaker, Microlaser, matter bin, power cells.
 				continue
 			nice_list += list("[req_components[A]] [initial(A.name)]")
 		. += "<span class='notice'>Required components: [english_list(nice_list)].</span>"
+
+		var/list/already_have = user.GetAllContents() & req_components  // get only the items you have
+		nice_list = list()
+
+		for(var/atom/part in req_components)
+			if(part in already_filled)
+				var/new_amt = req_components[part] - already_have[part]
+				if(new_amt >= 0 && !ispath(A))
+					nice_list += list("[req_components[A]] [initial(A.name)]")
+
+		. += "<span class='notice'>\nComponents needing to get: [english_list(nice_list)]"
