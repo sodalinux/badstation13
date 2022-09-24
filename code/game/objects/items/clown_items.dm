@@ -135,9 +135,9 @@
 
 
 /obj/item/soap/attack_self(mob/user)
-	. = ..()
 	if(istype(user))
 		afterattack(user, user, TRUE)
+	. = ..()
 
 /*
  * Bike Horns
