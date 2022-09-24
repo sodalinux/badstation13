@@ -152,6 +152,7 @@ GLOBAL_LIST_INIT(blacklisted_cargo_types, typecacheof(list(
 		if(SO.pack.dangerous)
 			message_admins("\A [SO.pack.name] ordered by [ADMIN_LOOKUPFLW(SO.orderer_ckey)], paid by [D.account_holder] has shipped.")
 		purchases++
+		SO.cur_supply += 1
 
 	for(var/I in miscboxes)
 		var/datum/supply_order/SO = new/datum/supply_order()

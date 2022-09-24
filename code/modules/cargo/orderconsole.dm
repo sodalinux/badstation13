@@ -189,6 +189,10 @@
 			if((pack.hidden && !(obj_flags & EMAGGED)) || (pack.contraband && !contraband) || pack.DropPodOnly)
 				return
 
+			if(pack.cur_supply > pack.max_supply)
+				say("Remote stock insufficient to provide this item. Please try again later.")
+				return
+
 			var/name = "*None Provided*"
 			var/rank = "*None Provided*"
 			var/ckey = usr.ckey

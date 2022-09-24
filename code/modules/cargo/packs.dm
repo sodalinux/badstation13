@@ -17,6 +17,8 @@
 	var/DropPodOnly = FALSE//only usable by the Bluespace Drop Pod via the express cargo console
 	var/admin_spawned = FALSE
 	var/small_item = FALSE //Small items can be grouped into a single crate.
+	var/max_supply = INFINITY  /// if set, will limit how often a crate can be bought
+	var/cur_supply = 0  /// how many times the crates been bought in this cycle
 
 /datum/supply_pack/proc/generate(atom/A, datum/bank_account/paying_account)
 	var/obj/structure/closet/crate/C

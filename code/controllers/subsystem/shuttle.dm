@@ -1,4 +1,5 @@
 #define MAX_TRANSIT_REQUEST_RETRIES 10
+#define SUPPLY_RECHARGE_RATE 2 MINUTES
 
 SUBSYSTEM_DEF(shuttle)
 	name = "Shuttle"
@@ -65,6 +66,8 @@ SUBSYSTEM_DEF(shuttle)
 
 	var/shuttles_loaded = FALSE
 
+	COOLDOWN_DECLARE(supply_refill)
+
 /datum/controller/subsystem/shuttle/Initialize(timeofday)
 	ordernum = rand(1, 9000)
 
@@ -129,6 +132,9 @@ SUBSYSTEM_DEF(shuttle)
 					M.transit_failure()
 			if(MC_TICK_CHECK)
 				break
+	if(COOLDOWN_FINISHED(supply_refill))
+		for(var/datum/supply_packs/pack in supply_packs)
+			pack.cur_supply = 0
 
 /datum/controller/subsystem/shuttle/proc/CheckAutoEvac()
 	if(emergencyNoEscape || emergencyNoRecall || !emergency || !SSticker.HasRoundStarted())
