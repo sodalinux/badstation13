@@ -1,3 +1,10 @@
+#define HIGH_DANGER 1	// things very easy to kill with when spammed (TESLA)
+#define SEC_FORCE 2		// guns, armor, oh my
+#define HIGH_USEFUL 3	// things like spacesuits, atmos tanks, things the crew doesnt usually have
+#define ANNOYING 5		// HONK HONK HONK HONK HONK
+#define STANDARD 10		// default if unset
+#define LIFE_CRIT 25	// med supplies, internals, plasman suits, other things needed in short supply
+
 /datum/supply_pack
 	var/name = "Crate"
 	var/group = ""
@@ -17,7 +24,7 @@
 	var/DropPodOnly = FALSE//only usable by the Bluespace Drop Pod via the express cargo console
 	var/admin_spawned = FALSE
 	var/small_item = FALSE //Small items can be grouped into a single crate.
-	var/max_supply = INFINITY  /// if set, will limit how often a crate can be bought
+	var/max_supply = STANDARD  /// if set, will limit how often a crate can be bought
 	var/cur_supply = 0  /// how many times the crates been bought in this cycle
 
 /datum/supply_pack/proc/generate(atom/A, datum/bank_account/paying_account)
@@ -60,6 +67,7 @@
 
 /datum/supply_pack/emergency
 	group = "Emergency"
+	max_supply = LIFE_CRIT
 
 /datum/supply_pack/emergency/vehicle
 	name = "Biker Gang Kit" //TUNNEL SNAKES OWN THIS TOWN
@@ -74,6 +82,7 @@
 					/obj/item/clothing/mask/bandana/skull)//so you can properly #cargoniabikergang
 	crate_name = "Biker Kit"
 	crate_type = /obj/structure/closet/crate/large
+	max_supply = STANDARD
 
 /datum/supply_pack/emergency/bio
 	name = "Biological Emergency Crate"
@@ -132,6 +141,7 @@
 					/obj/item/wirecutters,
 					/obj/item/multitool)
 	crate_name = "bomb suit crate"
+	max_supply = HIGH_USEFUL
 
 /datum/supply_pack/emergency/firefighting
 	name = "Firefighting Crate"
@@ -156,6 +166,7 @@
 					/obj/item/clothing/head/hardhat/red,
 					/obj/item/clothing/head/hardhat/red)
 	crate_name = "firefighting crate"
+	max_supply = HIGH_USEFUL
 
 /datum/supply_pack/emergency/atmostank
 	name = "Firefighting Tank Backpack"
@@ -236,6 +247,7 @@
 					/obj/item/reagent_containers/food/drinks/drinkingglass/shotglass)
 	crate_name = "radiation protection crate"
 	crate_type = /obj/structure/closet/crate/radiation
+	max_supply = STANDARD
 
 /datum/supply_pack/emergency/spacesuit
 	name = "Space Suit Crate"
@@ -246,6 +258,7 @@
 					/obj/item/clothing/mask/breath)
 	crate_name = "space suit crate"
 	crate_type = /obj/structure/closet/crate/secure
+	max_supply = HIGH_USEFUL
 
 /datum/supply_pack/emergency/spacesuit/bulk
 	name = "Bulk Space Suit Crate"
@@ -262,6 +275,7 @@
 					/obj/item/clothing/mask/breath)
 	crate_name = "bulk space suit crate"
 	crate_type = /obj/structure/closet/crate/secure
+	max_supply = HIGH_USEFUL
 
 /datum/supply_pack/emergency/specialops
 	name = "Special Ops Supplies"
@@ -276,6 +290,7 @@
 					/obj/item/grenade/chem_grenade/incendiary)
 	crate_name = "emergency crate"
 	crate_type = /obj/structure/closet/crate/internals
+	max_supply = HIGH_DANGER
 
 /datum/supply_pack/emergency/syndieclothes
 	name = "Syndicate Uniform Supplies"
@@ -302,6 +317,7 @@
 					/obj/item/clothing/suit/armor/vest)
 	crate_name = "emergency crate"
 	crate_type = /obj/structure/closet/crate/internals
+	max_supply = SEC_FORCE
 
 /datum/supply_pack/emergency/weedcontrol
 	name = "Weed Control Crate"
@@ -324,6 +340,7 @@
 	access = ACCESS_SECURITY
 	access_budget = ACCESS_SECURITY
 	crate_type = /obj/structure/closet/crate/secure/gear
+	max_supply = SEC_FORCE
 
 /datum/supply_pack/security/armor
 	name = "Armor Crate"
@@ -345,6 +362,7 @@
 					/obj/item/gun/energy/disabler,
 					/obj/item/gun/energy/disabler)
 	crate_name = "disabler crate"
+	max_supply = HIGH_USEFUL
 
 /datum/supply_pack/security/dumdum
 	name = ".38 DumDum Speedloader"
@@ -368,6 +386,7 @@
 					/obj/item/toy/crayon/white,
 					/obj/item/clothing/head/fedora/det_hat)
 	crate_name = "forensics crate"
+	max_supply = STANDARD
 
 /datum/supply_pack/security/laser
 	name = "Lasers Crate"
@@ -447,10 +466,11 @@
 
 /datum/supply_pack/security/vending/security
 	name = "SecTech Supply Crate"
-	desc = "Officer Paul bought all the donuts? Then refill the security vendor with ths crate."
+	desc = "Officer Paul bought all the donuts? Then refill the security vendor with this crate."
 	cost = 1200
 	contains = list(/obj/item/vending_refill/security)
 	crate_name = "SecTech supply crate"
+	max_supply = STANDARD
 
 /datum/supply_pack/security/firingpins
 	name = "Standard Firing Pins Crate"
@@ -508,6 +528,7 @@
 	access = ACCESS_ARMORY
 	access_budget = ACCESS_ARMORY
 	crate_type = /obj/structure/closet/crate/secure/weapon
+	max_supply = SEC_FORCE
 
 /datum/supply_pack/security/ammo
 	name = "Ammo Crate"
@@ -733,6 +754,7 @@
 					/obj/item/deployablemine/smartstun,
 					/obj/item/deployablemine/smartstun)
 	crate_name = "stun mine create"
+	max_supply = HIGH_DANGER
 
 /datum/supply_pack/security/armory/stunmine
 	name = "Stun Mine Crate"
@@ -744,6 +766,7 @@
 					/obj/item/deployablemine/stun,
 					/obj/item/deployablemine/stun)
 	crate_name = "stun mine create"
+	max_supply = HIGH_DANGER
 
 /datum/supply_pack/security/armory/swat
 	name = "SWAT Crate"
@@ -803,6 +826,7 @@
 	contains = list(/obj/machinery/shieldgen,
 					/obj/machinery/shieldgen)
 	crate_name = "anti-breach shield projector crate"
+	max_supply = LIFE_CRIT
 
 /datum/supply_pack/engineering/ripley
 	name = "APLU MK-I Crate"
@@ -863,6 +887,7 @@
 					/obj/item/clothing/gloves/color/yellow)
 	crate_name = "insulated gloves crate"
 	crate_type = /obj/structure/closet/crate/engineering/electrical
+	max_supply = HIGH_USEFUL  // less insuls thx
 
 /datum/supply_pack/engineering/jetpack
 	name = "Jetpack Crate"
@@ -871,6 +896,7 @@
 	access_budget = FALSE
 	contains = list(/obj/item/tank/jetpack/carbondioxide)
 	crate_name = "jetpack crate"
+	max_supply = HIGH_USEFUL
 
 /datum/supply_pack/engineering/jetpack3
 	name = "Bulk Jetpack Crate"
@@ -881,6 +907,7 @@
 					/obj/item/tank/jetpack/carbondioxide,
 					/obj/item/tank/jetpack/carbondioxide)
 	crate_name = "bulk jetpack crate"
+	max_supply = HIGH_USEFUL
 
 /datum/supply_pack/engineering/spacecapsule
 	name = "Space Shelter Capsule"
@@ -894,6 +921,7 @@
 					/obj/item/rcd_ammo)
 	crate_name = "space shelter crate"
 	crate_type = /obj/structure/closet/crate/engineering/electrical
+	max_supply = HIGH_USEFUL
 
 /obj/item/stock_parts/cell/inducer_supply
 	maxcharge = 5000
@@ -1012,7 +1040,7 @@
 					/obj/machinery/satellite/meteor_shield
 					)
 	crate_name= "shield sat crate"
-
+	max_supply = LIFE_CRIT
 
 /datum/supply_pack/engineering/shield_sat_control
 	name = "Shield System Control Board"
@@ -1053,6 +1081,7 @@
 		)
 	crate_name = "shuttle construction crate"
 	crate_type = /obj/structure/closet/crate/large
+	max_supply = HIGH_USEFUL
 
 /datum/supply_pack/engineering/portable_pumps
 	name = "Portable Pumps"
@@ -1092,6 +1121,7 @@
 	contains = list(/obj/item/am_containment,
 					/obj/item/am_containment)
 	crate_name = "antimatter jar crate"
+	max_supply = HIGH_DANGER
 
 /datum/supply_pack/engine/am_core
 	name = "Antimatter Control Crate"
@@ -1099,6 +1129,7 @@
 	cost = 4700
 	contains = list(/obj/machinery/power/am_control_unit)
 	crate_name = "antimatter control crate"
+	max_supply = HIGH_DANGER
 
 /datum/supply_pack/engine/am_shielding
 	name = "Antimatter Shielding Crate"
@@ -1115,6 +1146,7 @@
 					/obj/item/am_shielding_container,
 					/obj/item/am_shielding_container) //10 shields: 3x3 containment and a core
 	crate_name = "antimatter shielding crate"
+	max_supply = HIGH_DANGER
 
 /datum/supply_pack/engine/emitter
 	name = "Emitter Crate"
@@ -1145,6 +1177,7 @@
 					/obj/machinery/power/grounding_rod)
 	crate_name = "grounding rod crate"
 	crate_type = /obj/structure/closet/crate/engineering/electrical
+	max_supply = HIGH_DANGER  // lynch qm
 
 /datum/supply_pack/engine/PA
 	name = "Particle Accelerator Crate"
@@ -1162,6 +1195,7 @@
 	crate_name = "particle accelerator crate"
 	crate_type = /obj/structure/closet/crate/secure/engineering
 	dangerous = TRUE
+	max_supply = HIGH_DANGER
 
 /datum/supply_pack/engine/collector
 	name = "Radiation Collector Crate"
@@ -1182,6 +1216,7 @@
 	crate_name = "singularity generator crate"
 	crate_type = /obj/structure/closet/crate/secure/engineering
 	dangerous = TRUE
+	max_supply = HIGH_DANGER  // geezus no
 
 /datum/supply_pack/engine/solar
 	name = "Solar Panel Crate"
@@ -1224,6 +1259,7 @@
 	crate_name = "supermatter shard crate"
 	crate_type = /obj/structure/closet/crate/secure/engineering
 	dangerous = TRUE
+	max_supply = HIGH_DANGER
 
 /datum/supply_pack/engine/tesla_coils
 	name = "Tesla Coil Crate"
@@ -1235,6 +1271,7 @@
 					/obj/machinery/power/tesla_coil)
 	crate_name = "tesla coil crate"
 	crate_type = /obj/structure/closet/crate/engineering/electrical
+	max_supply = HIGH_DANGER  // who built 10 teslas outside cargo
 
 /datum/supply_pack/engine/tesla_gen
 	name = "Tesla Generator Crate"
@@ -1246,6 +1283,7 @@
 	crate_name = "tesla generator crate"
 	crate_type = /obj/structure/closet/crate/secure/engineering
 	dangerous = TRUE
+	max_supply = HIGH_DANGER
 
 //////////////////////////////////////////////////////////////////////////////
 /////////////////////// Canisters & Materials ////////////////////////////////
@@ -1355,6 +1393,7 @@
 	contains = list(/obj/machinery/portable_atmospherics/canister/bz)
 	crate_name = "BZ canister crate"
 	crate_type = /obj/structure/closet/crate/secure
+	max_supply = HIGH_DANGER
 
 /datum/supply_pack/materials/carbon_dio
 	name = "Carbon Dioxide Canister"
@@ -1441,6 +1480,7 @@
 	group = "Medical"
 	access_budget = ACCESS_MEDICAL
 	crate_type = /obj/structure/closet/crate/medical
+	max_supply = LIFE_CRIT
 
 /datum/supply_pack/medical/bloodpacks
 	name = "Blood Pack Variety Crate"
@@ -1470,6 +1510,7 @@
 					/obj/item/reagent_containers/food/drinks/bottle/synthflesh)
 	crate_name = "rusty freezer"
 	crate_type = /obj/structure/closet/crate/freezer
+	max_supply = HIGH_USEFUL
 
 /datum/supply_pack/medical/basickits
 	name = "Basic Treatment Kits Crate"
@@ -1622,6 +1663,7 @@
 	crate_name = "virus sample crate"
 	crate_type = /obj/structure/closet/crate/secure/plasma
 	dangerous = TRUE
+	max_supply = HIGH_DANGER
 
 /datum/supply_pack/medical/virology
 	name = "Junior Epidemiology Kit"
@@ -1637,6 +1679,7 @@
 					/obj/item/toy/figure/virologist)
 	crate_name = "Junior Epidemiology Kit"
 	dangerous = TRUE
+	max_supply = HIGH_DANGER
 
 /datum/supply_pack/medical/vending
 	name = "Medical Vending Crate"
@@ -1645,6 +1688,7 @@
 	contains = list(/obj/item/vending_refill/medical,
 					/obj/item/vending_refill/wallmed)
 	crate_name = "medical vending crate"
+	max_supply = STANDARD
 
 /datum/supply_pack/medical/virus
 	name = "Virus Crate"
@@ -1680,7 +1724,9 @@
 	access = ACCESS_VIROLOGY
 	contains = list(/obj/machinery/computer/pandemic)
 	crate_name = "P.A.N.D.E.M.I.C. Replacement Crate"
-	dangerous = TRUE
+	dangerous = TRUEm
+	max_supply = HIGH_DANGER
+
 //////////////////////////////////////////////////////////////////////////////
 //////////////////////////// Science /////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////
@@ -1710,6 +1756,7 @@
 					/obj/item/assembly/timer)
 	crate_name = "plasma assembly crate"
 	crate_type = /obj/structure/closet/crate/secure/plasma
+	max_supply = HIGH_DANGER
 
 /datum/supply_pack/science/robotics
 	name = "Robotics Assembly Crate"
@@ -1793,6 +1840,7 @@
 	crate_name = "tank transfer valves crate"
 	crate_type = /obj/structure/closet/crate/secure/science
 	dangerous = TRUE
+	max_supply = HIGH_DANGER
 
 /datum/supply_pack/science/xenobio
 	name = "Xenobiology Lab Crate"
@@ -2076,6 +2124,7 @@
 					/obj/item/clothing/suit/beekeeper_suit)
 	crate_name = "beekeeper suits"
 	crate_type = /obj/structure/closet/crate/hydroponics
+	max_supply = HIGH_DANGER
 
 /datum/supply_pack/organic/hydroponics/beekeeping_fullkit
 	name = "Beekeeping Starter Crate"
@@ -2091,6 +2140,7 @@
 					/obj/item/melee/flyswatter)
 	crate_name = "beekeeping starter crate"
 	crate_type = /obj/structure/closet/crate/hydroponics
+	max_supply = HIGH_DANGER
 
 /datum/supply_pack/organic/randomized/chef
 	name = "Excellent Meat Crate"
@@ -2180,6 +2230,7 @@
 	crate_name = "party equipment crate"
 	contraband = TRUE
 	crate_type = /obj/structure/closet/crate/secure
+	max_supply = ANNOYING  // if you spam buy this i will kill you
 
 /datum/supply_pack/organic/hydroponics
 	name = "Hydroponics Crate"
@@ -2339,6 +2390,8 @@
 					/obj/item/reagent_containers/food/snacks/canned/beefbroth
 					)
 	crate_name = "Beef Broth Care"
+	max_supply = 100  // too much stock!!
+
 //////////////////////////////////////////////////////////////////////////////
 ////////////////////////////// Livestock /////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////
@@ -2346,6 +2399,7 @@
 /datum/supply_pack/critter
 	group = "Livestock"
 	crate_type = /obj/structure/closet/crate/critter
+	max_supply = ANNOYING
 
 /datum/supply_pack/critter/parrot
 	name = "Bird Crate"
@@ -2648,6 +2702,7 @@
 	contains = list(/obj/item/firing_pin/clown)
 	crate_name = "toy crate" // It's /technically/ a toy. For the clown, at least.
 	crate_type = /obj/structure/closet/crate/wooden
+	max_supply = SEC_FORCE  // even the code was decieved!
 
 /datum/supply_pack/costumes_toys/lasertag
 	name = "Laser Tag Crate"
@@ -2814,6 +2869,7 @@
 	contains = list()
 	crate_type = /obj/structure/closet/crate/wooden
 	crate_name = "plushie crate"
+	max_supply = LIFE_CRIT // daw
 
 /datum/supply_pack/costumes_toys/randomised/plush/fill(obj/structure/closet/crate/C)
 	var/plush
@@ -2957,6 +3013,7 @@
 	contains = list(/obj/vehicle/ridden/bicycle)
 	crate_name = "Bicycle Crate"
 	crate_type = /obj/structure/closet/crate/large
+	max_supply = INFINITY  // fun little impossibility
 
 /datum/supply_pack/misc/bicycle/generate(atom/A, datum/bank_account/paying_account)
 	. = ..()
@@ -3087,3 +3144,11 @@
 					/obj/item/toner/large,
 					/obj/item/toner/large)
 	crate_name = "large toner crate"
+
+
+#undef HIGH_DANGER
+#undef SEC_FORCE
+#undef HIGH_USEFUL
+#undef ANNOYING
+#undef STANDARD
+#undef LIFE_CRIT
