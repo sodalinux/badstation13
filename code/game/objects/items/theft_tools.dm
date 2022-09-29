@@ -266,3 +266,38 @@
 	playsound(src, 'sound/effects/supermatter.ogg', 50, 1)
 	QDEL_NULL(sliver)
 	update_icon()
+
+// STEALING COMMS CONSOLE CHIP
+
+/obj/item/multitool/commsole
+	name = "high-voltage multitool"
+	desc = "A modified multitool that outputs more power, enough to fry an unprotected circuit."
+	icon = 'icons/obj/nuke_tools.dmi'
+	icon_state = "multitool_comms"
+	toolspeed = 0.5
+
+/obj/item/paper/guides/antag/comms_instructions
+	info = "How to exctract a computer chip from the circuitboard:<br>\
+	<ul>\
+	<li>WARNING: Console debug mode is locked to the bridge.</li>\
+	<li>Do not attempt to construct a comms console outside of bridge, as there is no known way to bypass this lock.</li>\
+	<li>Pulse the console with the high-power multitool provided to you.</li>\
+	<li>Use the keyboard to select tcomm_test from the dev menu.</li>\
+	<li>Optionally, if you believe you would benefit from the chaos, you may alt-click to send out a broadcast for anyone to attack the station.</li>\
+	<li>Use a wirecutter to carefully cut out the communication chip.</li>\
+	<li>Once you're done, use the keyboard to reboot back into the main os.</li>\
+	<li>???</li>\
+	</ul>"
+
+/obj/item/comms_chip
+	name = "communications chip"
+	icon = 'icons/obj/module.dmi'
+	icon_state = "cpu"
+	resistance_flags = INDESTRUCTIBLE | LAVA_PROOF | FIRE_PROOF | ACID_PROOF
+	layer = ABOVE_MOB_LAYER
+
+/obj/item/comms_chip/Initialize(mapload)
+	. = ..()
+	var/serial_num = random_string(rand(2, 5), GLOB.hex_characters + GLOB.alphabet) || "X0RG"  // fun flavour text
+	desc = "An important looking computer chip. Inscribed on it is a tiny piece of text, which says \
+	bluespace communication chip no. [serial_num], property of Nanotrasen."

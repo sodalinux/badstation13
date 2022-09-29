@@ -114,6 +114,15 @@
 /datum/objective_item/steal/supermatter/TargetExists()
 	return GLOB.main_supermatter_engine != null
 
+/datum/objective_item/steal/comms_chip
+	name = "a special quantam bluespace communication chip. These are supplied for the communication consoles on station."
+	targetitem = /obj/item/comms_chip
+	difficulty = 10
+
+/datum/objective_item/steal/comms_chip/New()
+	special_equipment += /obj/item/storage/box/syndie_kit/comms_chip
+	..()
+
 //Items with special checks!
 /datum/objective_item/steal/plasma
 	name = "28 moles of plasma (full tank). Be sure to fill up the tank with additional plasma since it doesn't start full!"

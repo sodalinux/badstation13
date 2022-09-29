@@ -439,6 +439,13 @@
 	new /obj/item/nuke_core_container/supermatter(src)
 	new /obj/item/paper/guides/antag/supermatter_sliver(src)
 
+/obj/item/storage/box/syndie_kit/comms_chip
+	name = "box"
+
+/obj/item/storage/box/syndie_kit/comms_chip/PopulateContents()
+	new /obj/item/multitool/commsole(src)
+	new /obj/item/paper/guides/antag/comms_instructions(src)
+
 /obj/item/storage/box/syndie_kit/tuberculosisgrenade
 	name = "virus grenade kit"
 

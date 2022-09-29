@@ -5,6 +5,12 @@
 #define STATE_CHANGING_STATUS "changing_status"
 #define STATE_MESSAGES "messages"
 
+#define STEAL_COMPLETE -1
+#define STEAL_STD 0
+#define STEAL_IN_DEBUG_MODE 1
+#define STEAL_IN_TCOM_TEST 2
+#define STEAL_LAST_CALL 3
+
 // The communications computer
 /obj/machinery/computer/communications
 	name = "communications console"
@@ -40,6 +46,8 @@
 	/// The last lines used for changing the status display
 	var/static/last_status_display
 
+	var/steal_progress = STEAL_STD
+
 /obj/machinery/computer/communications/Initialize(mapload)
 	. = ..()
 	GLOB.shuttle_caller_list += src
@@ -65,10 +73,19 @@
 /obj/machinery/computer/communications/attackby(obj/I, mob/user, params)
 	if(istype(I, /obj/item/card/id))
 		attack_hand(user)
+	if(istype(I, /obj/item/multitool/commsole))
+		if(!istype(user.loc, /area/bridge)  // ffrick you if you thought you could maint scum this
+			to_chat(user, "<span class='warning'>ERROR: Location is not _bridge_, please relocate and try again.</span>")
+			return
+		to_chat(user, "<span class='notice'>You short an important circuit, rebooting the machine into safe mode.</span>")
+		steal_progress = STEAL_IN_DEBUG_MODE
+		update_icon()
 	else
 		return ..()
 
 /obj/machinery/computer/communications/emag_act(mob/user)
+	if(steal_progress > STEAL_STD)  // too confus
+		return
 	if (obj_flags & EMAGGED)
 		return
 	obj_flags |= EMAGGED
@@ -521,6 +538,68 @@
 			status_signal.data["picture_state"] = data1
 
 	frequency.post_signal(src, status_signal)
+
+// fun hacking mode
+/obj/machinery/computer/communications/attack_hand(mob/living/user)
+	if(steal_progress > STEAL_STD)
+		if(user?.mind?.special_role != ROLE_TRAITOR)
+			to_chat(user, "<span class='notice'>[get_cancel_str(user)]</span>")
+			if(steal_progress >= STEAL_IN_TCOM_TEST)
+				to_chat(user, "<span class='notice'>A circuit panel on the side closes and bolts shut.</span>")
+			update_icon()
+			return
+		switch(steal_progress)
+			if(STEAL_IN_DEBUG_MODE)
+				to_chat(user, "<span class='notice'>You boot into tcomm_test mode.</span>")
+				steal_progress++
+			if(STEAL_IN_TCOM_TEST)
+				to_chat(user, "<span class='notice'>You're already in testing mode!")
+			if(STEAL_LAST_CALL)
+				to_chat(user, "<span class='notice'>Feeling accomplished, you reboot into the main os.</span>")
+				steal_progress = STEAL_COMPLETE
+	update_icon()
+	return
+
+/obj/machinery/computer/communications/wirecutter_act(mob/living/user)
+	if(steal_progress != STEAL_IN_TCOM_TEST)
+		return
+	to_chat(user, "<span class='notice'>You carefully try to cut the chip off the board..</span>")
+	if(!do_after(user, 5 SECONDS, target=user))
+		return TRUE
+	new /obj/item/comms_chip(user.loc)
+	to_chat(user, "<span class='notice'>..and succeed! The chip falls to the floor silently.</span>")
+	steal_progress = STEAL_LAST_CALL
+	return TRUE
+
+/obj/machinery/computer/communications/proc/get_cancel_str(mob/living/user)
+	var/role = user.mind?.assigned_role
+	if(role == JOB_NAME_CAPTAIN)
+		return "You silently worry about the station's integrety, and the lives of your crewmembes as you reset the console."
+	if(role in GLOB.command_positions)
+		return "You swiftly reset the communications console, happy that no crewmember managed to mess up the console too bad."
+	if(role in GLOB.security_positions)
+		return "Seems there's some bad actor around. You reset the console, making a note to notify the command staff."
+	if(role in GLOB.engineering_positions || role in GLOB.science_positions)
+		return "Supressing your curiousity to investigate, you navigate to the reset button."
+	if(role in GLOB.supply_positions)
+		return "As you reset the console, you make a note to order the new model."
+	if(role in GLOB.medical_positions)
+		return "Sometimes you wonder the mental state of the crew. You reset the console."
+	if(role in GLOB.gimmick_positions)
+		return "As you reset the console, a sense of joy fills you thinking of the chaos incoming."
+	if(role == JOB_NAME_CLOWN)
+		return "You slam down on the keyboard, causing it to emergency reboot. Whoops!"
+	if(role == JOB_NAME_ASSISTANT)
+		return "Supressing the urge to go full greytide, you reset the console."
+	if(role in GLOB.nonhuman_positions)
+		return "You send a reset signal to the console."
+	return "You navigate to the reset option and hit enter."
+
+/obj/machinery/computer/communications/AltClick(mob/user)
+	if(steal_progress <= STEAL_STD)
+		return
+	// do the hacking thing space ninja does to raise the threat
+
 
 /obj/machinery/computer/communications/Destroy()
 	GLOB.shuttle_caller_list -= src
