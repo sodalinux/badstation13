@@ -26,6 +26,7 @@
 #define DIAG_LAUNCHPAD_HUD "22" //Displays launchpads' targeting reticle
 //for antag huds. these are used at the /mob level
 #define ANTAG_HUD		"23"
+#define HUMAN_DETECTOR_HUD	"24"  //! AI gets an overlay to enforce asimov better
 
 //by default everything in the hud_list of an atom is an image
 //a value in hud_list with one of these will change that behavior
@@ -42,28 +43,29 @@
 #define DATA_HUD_ABDUCTOR				7
 #define DATA_HUD_SENTIENT_DISEASE		8
 #define DATA_HUD_AI_DETECT				9
+#define DATA_HUD_AI_HUMAN				10
 
 //antag HUD defines
-#define ANTAG_HUD_CULT			10
-#define ANTAG_HUD_REV			11
-#define ANTAG_HUD_OPS			12
-#define ANTAG_HUD_WIZ			13
-#define ANTAG_HUD_SHADOW    	14
-#define ANTAG_HUD_TRAITOR 		15
-#define ANTAG_HUD_NINJA 		16
-#define ANTAG_HUD_CHANGELING 	17
-#define ANTAG_HUD_ABDUCTOR 		18
-#define ANTAG_HUD_DEVIL			19
-#define ANTAG_HUD_SINTOUCHED	20
-#define ANTAG_HUD_SOULLESS		21
-#define ANTAG_HUD_CLOCKWORK		22
-#define ANTAG_HUD_BROTHER		23
-#define ANTAG_HUD_OBSESSED	24
-#define ANTAG_HUD_FUGITIVE	25
-#define ANTAG_HUD_BRAINWASHED   26
-#define ANTAG_HUD_SURVIVALIST   27
-#define ANTAG_HUD_INCURSION 28
-#define ANTAG_HUD_HERETIC	29
+#define ANTAG_HUD_CULT			11
+#define ANTAG_HUD_REV			12
+#define ANTAG_HUD_OPS			13
+#define ANTAG_HUD_WIZ			14
+#define ANTAG_HUD_SHADOW    	15
+#define ANTAG_HUD_TRAITOR 		16
+#define ANTAG_HUD_NINJA 		17
+#define ANTAG_HUD_CHANGELING 	18
+#define ANTAG_HUD_ABDUCTOR 		19
+#define ANTAG_HUD_DEVIL			20
+#define ANTAG_HUD_SINTOUCHED	21
+#define ANTAG_HUD_SOULLESS		22
+#define ANTAG_HUD_CLOCKWORK		23
+#define ANTAG_HUD_BROTHER		24
+#define ANTAG_HUD_OBSESSED		25
+#define ANTAG_HUD_FUGITIVE		26
+#define ANTAG_HUD_BRAINWASHED   27
+#define ANTAG_HUD_SURVIVALIST   28
+#define ANTAG_HUD_INCURSION 	29
+#define ANTAG_HUD_HERETIC		30
 
 // Notification action types
 #define NOTIFY_JUMP "jump"

@@ -76,6 +76,9 @@
 			var/mob/camera/ai_eye/E = V
 			E.update_ai_detect_hud()
 
+/datum/atom_hud/ai_human
+	hud_icons = list(HUMAN_DETECTOR_HUD)
+
 /* MED/SEC/DIAG HUD HOOKS */
 
 /*
@@ -486,3 +489,30 @@
 		holder.icon_state = "electrified"
 	else
 		holder.icon_state = ""
+
+/*~~~~~~~~~~~~
+	AI Human detector
+~~~~~~~~~~~~*/
+
+/mob/living/carbon/human/proc/ai_human_detect()
+	var/image/holder = hud_list[HUMAN_DETECTOR_HUD]
+	var/icon/I = icon(icon, icon_state, dir)
+	holder.pixel_y = I.Height() - world.icon_size
+
+	var/perpname = get_face_name(get_id_name(""))
+	if(perpname && GLOB.data_core)
+		var/datum/data/record/R = find_record("name", perpname, GLOB.data_core.medical)
+		if(lowertext(R.fields["species"]) == "human")
+			holder.icon_state = "ishuman"
+			return
+
+	if(dna?.species && !skipface)
+		if(dna.species == /datum/species/human)
+			holder.icon_state = "ishuman"
+			return
+
+	addtimer(CALLBACK(src, .proc/clear_grace), 20 SECONDS)
+
+/mob/living/carbon/human/proc/clear_grace()  // humans get a grace period to still be a human when becoming unknown
+	var/image/holder = hud_list[HUMAN_DETECTOR_HUD]
+	holder.icon_state = ""
