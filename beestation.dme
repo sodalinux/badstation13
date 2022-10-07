@@ -512,6 +512,7 @@
 #include "code\datums\components\aquarium.dm"
 #include "code\datums\components\area_sound_manager.dm"
 #include "code\datums\components\armor_plate.dm"
+#include "code\datums\components\atom_construction.dm"
 #include "code\datums\components\beetlejuice.dm"
 #include "code\datums\components\butchering.dm"
 #include "code\datums\components\caltrop.dm"
