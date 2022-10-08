@@ -60,7 +60,7 @@
 	pixel_y = 3
 	},
 /obj/item/book/manual/wiki/detective,
-/obj/item/camera/detective,
+/obj/item/assembly/camera/detective,
 /obj/effect/turf_decal/tile/neutral{
 	dir = 1
 	},

@@ -2955,7 +2955,7 @@
 "nt" = (
 /obj/structure/table/wood,
 /obj/item/storage/photo_album,
-/obj/item/camera,
+/obj/item/assembly/camera,
 /obj/effect/turf_decal/tile/neutral{
 	dir = 1
 	},
@@ -3405,7 +3405,7 @@
 "og" = (
 /obj/structure/table/wood,
 /obj/item/storage/photo_album,
-/obj/item/camera,
+/obj/item/assembly/camera,
 /obj/structure/reagent_dispensers/peppertank{
 	pixel_y = 32
 	},
@@ -7789,7 +7789,7 @@
 /area/wizard_station)
 "wP" = (
 /obj/structure/table/wood/fancy,
-/obj/item/camera/spooky,
+/obj/item/assembly/camera/spooky,
 /turf/open/floor/carpet,
 /area/wizard_station)
 "wQ" = (
@@ -15630,7 +15630,7 @@
 /area/ctf)
 "SU" = (
 /obj/structure/table/wood,
-/obj/item/camera/detective{
+/obj/item/assembly/camera/detective{
 	desc = "A polaroid camera with extra capacity for social media marketing.";
 	name = "Professional camera"
 	},
@@ -15761,7 +15761,7 @@
 /area/ctf)
 "Ty" = (
 /obj/structure/table/reinforced,
-/obj/item/camera,
+/obj/item/assembly/camera,
 /turf/open/floor/plasteel,
 /area/centcom/supplypod)
 "Tz" = (

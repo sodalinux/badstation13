@@ -54947,7 +54947,7 @@
 /area/hallway/secondary/service)
 "pvh" = (
 /obj/structure/table/wood,
-/obj/item/camera,
+/obj/item/assembly/camera,
 /obj/item/taperecorder,
 /obj/machinery/light{
 	dir = 4
@@ -65547,7 +65547,7 @@
 	},
 /obj/structure/table/wood,
 /obj/item/storage/photo_album/Captain,
-/obj/item/camera,
+/obj/item/assembly/camera,
 /turf/open/floor/carpet/royalblue,
 /area/crew_quarters/heads/captain/private)
 "sGL" = (
@@ -70580,7 +70580,7 @@
 /obj/machinery/door/window/westright{
 	dir = 4
 	},
-/obj/item/camera,
+/obj/item/assembly/camera,
 /obj/item/camera_film,
 /turf/open/floor/plasteel/dark,
 /area/security/checkpoint/customs)
@@ -72513,7 +72513,7 @@
 /obj/machinery/newscaster{
 	pixel_x = -30
 	},
-/obj/item/camera,
+/obj/item/assembly/camera,
 /obj/item/camera_film,
 /turf/open/floor/plasteel/cafeteria{
 	dir = 5

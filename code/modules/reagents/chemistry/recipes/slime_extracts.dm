@@ -587,7 +587,7 @@
 	required_other = TRUE
 
 /datum/chemical_reaction/slime/slimecamera/on_reaction(datum/reagents/holder)
-	new /obj/item/camera(get_turf(holder.my_atom))
+	new /obj/item/assembly/camera(get_turf(holder.my_atom))
 	new /obj/item/camera_film(get_turf(holder.my_atom))
 	..()
 

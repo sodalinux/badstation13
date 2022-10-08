@@ -361,7 +361,7 @@
 	access_budget = ACCESS_MORGUE
 	contains = list(/obj/item/detective_scanner,
 					/obj/item/storage/box/evidence,
-					/obj/item/camera,
+					/obj/item/assembly/camera,
 					/obj/item/taperecorder,
 					/obj/item/toy/crayon/white,
 					/obj/item/clothing/head/fedora/det_hat)

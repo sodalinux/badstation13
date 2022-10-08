@@ -98,7 +98,7 @@
 		/obj/item/transfer_valve = 6,
 		/obj/item/cartridge/rd = 3,
 		/obj/item/radio = 5,
-		/obj/item/camera = 4,
+		/obj/item/assembly/camera = 4,
 		/obj/item/encryptionkey/headset_sci = 3,
 		/obj/item/aicard = 2,
 		/obj/item/flamethrower = 2,

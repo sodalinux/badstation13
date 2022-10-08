@@ -129,7 +129,7 @@ Industrial extracts:
 	colour = "sepia"
 	effect_desc = "Produces cameras."
 	plasmarequired = 2
-	itempath = /obj/item/camera
+	itempath = /obj/item/assembly/camera
 
 /obj/item/slimecross/industrial/cerulean
 	colour = "cerulean"

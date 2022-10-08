@@ -7940,7 +7940,7 @@
 /obj/structure/table/wood,
 /obj/item/folder/red,
 /obj/item/hand_labeler,
-/obj/item/camera/detective,
+/obj/item/assembly/camera/detective,
 /turf/open/floor/carpet/red,
 /area/security/detectives_office)
 "aBo" = (
@@ -17668,7 +17668,7 @@
 /obj/item/storage/photo_album{
 	pixel_y = -4
 	},
-/obj/item/camera{
+/obj/item/assembly/camera{
 	pixel_y = 4
 	},
 /obj/item/radio/intercom{
@@ -19921,7 +19921,7 @@
 /obj/item/storage/crayons,
 /obj/item/storage/crayons,
 /obj/item/storage/crayons,
-/obj/item/camera,
+/obj/item/assembly/camera,
 /obj/item/camera_film,
 /turf/open/floor/plasteel,
 /area/storage/art)
@@ -78045,7 +78045,7 @@
 /area/medical/medbay/aft)
 "vgd" = (
 /obj/item/taperecorder,
-/obj/item/camera,
+/obj/item/assembly/camera,
 /obj/structure/table/wood,
 /obj/item/radio/intercom{
 	pixel_y = -29

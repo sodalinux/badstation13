@@ -7593,7 +7593,7 @@
 /area/storage/primary)
 "aFw" = (
 /obj/structure/table/wood,
-/obj/item/camera,
+/obj/item/assembly/camera,
 /turf/open/floor/carpet,
 /area/crew_quarters/heads/captain)
 "aFx" = (
@@ -31343,7 +31343,7 @@
 /area/library)
 "cAv" = (
 /obj/structure/table/wood,
-/obj/item/camera,
+/obj/item/assembly/camera,
 /obj/effect/turf_decal/tile/neutral{
 	dir = 1
 	},

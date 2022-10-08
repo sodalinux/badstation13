@@ -4327,7 +4327,7 @@
 /area/vacant_room/office)
 "aqh" = (
 /obj/structure/table/wood,
-/obj/item/camera,
+/obj/item/assembly/camera,
 /obj/machinery/light/small,
 /obj/structure/sign/nanotrasen{
 	pixel_y = -32
@@ -12942,7 +12942,7 @@
 	dir = 4;
 	pixel_x = -24
 	},
-/obj/item/camera,
+/obj/item/assembly/camera,
 /obj/effect/turf_decal/tile/neutral{
 	dir = 1
 	},
@@ -33601,7 +33601,7 @@
 "bSQ" = (
 /obj/structure/table/wood,
 /obj/item/storage/photo_album,
-/obj/item/camera,
+/obj/item/assembly/camera,
 /turf/open/floor/wood,
 /area/crew_quarters/heads/captain)
 "bSR" = (
@@ -44205,7 +44205,7 @@
 /area/crew_quarters/locker)
 "cvW" = (
 /obj/structure/table,
-/obj/item/camera,
+/obj/item/assembly/camera,
 /obj/effect/turf_decal/tile/neutral{
 	dir = 1
 	},
@@ -45619,7 +45619,7 @@
 "czN" = (
 /obj/structure/table/wood,
 /obj/item/taperecorder,
-/obj/item/camera,
+/obj/item/assembly/camera,
 /obj/effect/turf_decal/tile/neutral{
 	dir = 1
 	},
@@ -55698,7 +55698,7 @@
 /area/crew_quarters/fitness/recreation)
 "ddA" = (
 /obj/structure/table/wood,
-/obj/item/camera,
+/obj/item/assembly/camera,
 /obj/structure/sign/nanotrasen{
 	pixel_x = 32;
 	pixel_y = -32

@@ -151,7 +151,7 @@
 		/obj/item/assembly/signaler,
 		/obj/item/transfer_valve,
 		/obj/item/radio,
-		/obj/item/camera,
+		/obj/item/assembly/camera,
 		/obj/item/encryptionkey/headset_sci,
 		/obj/item/aicard,
 		/obj/item/flamethrower,

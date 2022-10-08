@@ -474,11 +474,11 @@
 
 /datum/crafting_recipe/spooky_camera
 	name = "Camera Obscura"
-	result = /obj/item/camera/spooky
+	result = /obj/item/assembly/camera/spooky
 	time = 15
-	reqs = list(/obj/item/camera = 1,
+	reqs = list(/obj/item/assembly/camera = 1,
 				/datum/reagent/water/holywater = 10)
-	parts = list(/obj/item/camera = 1)
+	parts = list(/obj/item/assembly/camera = 1)
 	category = CAT_MISC
 
 /datum/crafting_recipe/lizardhat

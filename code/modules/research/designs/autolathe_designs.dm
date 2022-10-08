@@ -227,7 +227,7 @@
 	id = "camera"
 	build_type = AUTOLATHE
 	materials = list(/datum/material/iron = 50, /datum/material/glass = 100)
-	build_path = /obj/item/camera
+	build_path = /obj/item/assembly/camera
 	category = list("initial", "Misc")
 
 /datum/design/camera_film

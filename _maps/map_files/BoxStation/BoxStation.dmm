@@ -4549,7 +4549,7 @@
 /area/lawoffice)
 "aui" = (
 /obj/structure/table/wood,
-/obj/item/camera/detective,
+/obj/item/assembly/camera/detective,
 /obj/structure/disposalpipe/segment{
 	dir = 9
 	},
@@ -8495,7 +8495,7 @@
 "aPi" = (
 /obj/structure/table/wood,
 /obj/item/taperecorder,
-/obj/item/camera,
+/obj/item/assembly/camera,
 /obj/item/radio/intercom{
 	pixel_y = 25
 	},
@@ -9557,7 +9557,7 @@
 "aTF" = (
 /obj/structure/table,
 /obj/item/camera_film,
-/obj/item/camera,
+/obj/item/assembly/camera,
 /turf/open/floor/plasteel,
 /area/storage/art)
 "aTG" = (
@@ -42998,7 +42998,7 @@
 	dir = 8;
 	pixel_x = 24
 	},
-/obj/item/camera,
+/obj/item/assembly/camera,
 /obj/item/storage/photo_album{
 	pixel_y = -10
 	},
@@ -55091,7 +55091,7 @@
 	pixel_x = 28
 	},
 /obj/structure/table/wood,
-/obj/item/camera,
+/obj/item/assembly/camera,
 /obj/item/storage/photo_album{
 	pixel_x = 3;
 	pixel_y = 2

@@ -50,7 +50,7 @@
 /area/template_noop)
 "i" = (
 /obj/structure/table/wood,
-/obj/item/camera,
+/obj/item/assembly/camera,
 /turf/open/floor/wood{
 	icon_state = "wood-broken3"
 	},

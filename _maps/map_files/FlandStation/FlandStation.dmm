@@ -35326,7 +35326,7 @@
 "iaj" = (
 /obj/structure/table/wood,
 /obj/item/clipboard,
-/obj/item/camera,
+/obj/item/assembly/camera,
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/sign/poster/official/do_not_question{
 	pixel_y = -32
@@ -37626,7 +37626,7 @@
 /area/maintenance/starboard/central)
 "iBa" = (
 /obj/structure/rack,
-/obj/item/camera,
+/obj/item/assembly/camera,
 /obj/item/restraints/handcuffs,
 /obj/item/restraints/handcuffs,
 /obj/item/restraints/handcuffs,
@@ -46416,7 +46416,7 @@
 "kFD" = (
 /obj/structure/table,
 /obj/item/camera_film,
-/obj/item/camera,
+/obj/item/assembly/camera,
 /obj/machinery/light/small{
 	dir = 4
 	},
@@ -51108,7 +51108,7 @@
 /area/engine/storage)
 "lNZ" = (
 /obj/item/book/manual/wiki/security_space_law,
-/obj/item/camera/detective,
+/obj/item/assembly/camera/detective,
 /obj/machinery/light_switch{
 	pixel_y = -24
 	},
@@ -52907,7 +52907,7 @@
 /obj/item/laser_pointer{
 	pixel_x = 3
 	},
-/obj/item/camera,
+/obj/item/assembly/camera,
 /obj/item/taperecorder,
 /turf/open/floor/wood,
 /area/library)
@@ -54876,7 +54876,7 @@
 /area/science/robotics/lab)
 "mGr" = (
 /obj/structure/table/wood,
-/obj/item/camera,
+/obj/item/assembly/camera,
 /obj/item/soap/nanotrasen,
 /obj/machinery/firealarm{
 	dir = 4;
@@ -85379,7 +85379,7 @@
 /area/maintenance/central)
 "tVu" = (
 /obj/item/taperecorder,
-/obj/item/camera,
+/obj/item/assembly/camera,
 /obj/item/radio/intercom{
 	pixel_y = -28
 	},
@@ -89225,7 +89225,7 @@
 /obj/item/storage/photo_album{
 	pixel_y = -4
 	},
-/obj/item/camera{
+/obj/item/assembly/camera{
 	pixel_y = 4
 	},
 /turf/open/floor/carpet/royalblue,

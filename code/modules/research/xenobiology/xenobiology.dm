@@ -619,7 +619,7 @@
 /obj/item/slime_extract/sepia/activate(mob/living/carbon/human/user, datum/species/species, activation_type)
 	switch(activation_type)
 		if(SLIME_ACTIVATE_MINOR)
-			var/obj/item/camera/O = new(user.drop_location(), 1)
+			var/obj/item/assembly/camera/O = new(user.drop_location(), 1)
 			playsound(user, 'sound/effects/splat.ogg', 50, 1)
 			user.visible_message("<span class='warning'>[user] spits out [O]!</span>", "<span class='notice'>You spit out [O]!</span>")
 			return 15 SECONDS

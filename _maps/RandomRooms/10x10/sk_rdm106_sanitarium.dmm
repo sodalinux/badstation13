@@ -261,7 +261,7 @@
 /obj/item/tape/random,
 /obj/item/tape/random,
 /obj/item/tape/random,
-/obj/item/camera,
+/obj/item/assembly/camera,
 /obj/item/camera_film,
 /obj/item/storage/pill_bottle/happiness{
 	pixel_x = -7

@@ -54,7 +54,7 @@
 /area/template_noop)
 "w" = (
 /obj/structure/table/wood,
-/obj/item/camera{
+/obj/item/assembly/camera{
 	desc = "A holographic camera with near infinite pictures.";
 	name = "holographic camera";
 	pictures_left = 999;

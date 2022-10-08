@@ -152,7 +152,7 @@
 
 	aiMulti = new(src)
 	radio = new /obj/item/radio/headset/silicon/ai(src)
-	aicamera = new/obj/item/camera/siliconcam/ai_camera(src)
+	aicamera = new/obj/item/assembly/camera/siliconcam/ai_camera(src)
 
 	deploy_action.Grant(src)
 

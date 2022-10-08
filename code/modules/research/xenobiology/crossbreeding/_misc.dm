@@ -7,7 +7,7 @@ Slimecrossing Items
 #define DEJAVU_REWIND_INTERVAL (10 SECONDS)
 
 //Rewind camera - I'm already Burning Sepia
-/obj/item/camera/rewind
+/obj/item/assembly/camera/rewind
 	name = "sepia-tinted camera"
 	desc = "They say a picture is like a moment stopped in time."
 	pictures_left = 1
@@ -131,7 +131,7 @@ Slimecrossing Items
 
 
 
-/obj/item/camera/rewind/afterattack(atom/target, mob/user, flag)
+/obj/item/assembly/camera/rewind/afterattack(atom/target, mob/user, flag)
 	if(!on || !pictures_left || !isturf(target.loc))
 		return
 	if(!used)//selfie time
@@ -149,14 +149,14 @@ Slimecrossing Items
 
 
 //Timefreeze camera - Old Burning Sepia result. Kept in case admins want to spawn it
-/obj/item/camera/timefreeze
+/obj/item/assembly/camera/timefreeze
 	name = "sepia-tinted camera"
 	desc = "They say a picture is like a moment stopped in time."
 	pictures_left = 1
 	pictures_max = 1
 	var/used = FALSE
 
-/obj/item/camera/timefreeze/afterattack(atom/target, mob/user, flag)
+/obj/item/assembly/camera/timefreeze/afterattack(atom/target, mob/user, flag)
 	if(!on || !pictures_left || !isturf(target.loc))
 		return
 	if(!used) //refilling the film does not refill the timestop

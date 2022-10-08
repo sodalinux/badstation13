@@ -29738,7 +29738,7 @@
 /obj/machinery/newscaster/security_unit{
 	pixel_x = 28
 	},
-/obj/item/camera,
+/obj/item/assembly/camera,
 /turf/open/floor/plasteel/dark,
 /area/crew_quarters/heads/captain)
 "aUI" = (
@@ -42278,7 +42278,7 @@
 /obj/effect/turf_decal/tile/neutral,
 /obj/effect/turf_decal/bot,
 /obj/effect/decal/cleanable/blood/old,
-/obj/item/camera{
+/obj/item/assembly/camera{
 	pixel_x = -2;
 	pixel_y = -2
 	},
@@ -45823,7 +45823,7 @@
 	pixel_x = -4;
 	pixel_y = 4
 	},
-/obj/item/camera,
+/obj/item/assembly/camera,
 /obj/machinery/computer/security/telescreen/entertainment{
 	pixel_y = -28
 	},
@@ -51403,7 +51403,7 @@
 	pixel_x = -4;
 	pixel_y = 4
 	},
-/obj/item/camera,
+/obj/item/assembly/camera,
 /obj/machinery/firealarm{
 	dir = 1;
 	pixel_y = -26

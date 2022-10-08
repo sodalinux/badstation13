@@ -1191,7 +1191,7 @@
 /obj/item/storage/photo_album{
 	pixel_y = 12
 	},
-/obj/item/camera,
+/obj/item/assembly/camera,
 /obj/effect/decal/cleanable/dirt/dust,
 /obj/effect/decal/cleanable/dirt/dust,
 /obj/machinery/light/small{

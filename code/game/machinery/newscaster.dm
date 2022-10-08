@@ -787,7 +787,7 @@ GLOBAL_LIST_EMPTY(allCasters)
 	if(photo)
 		picture = photo.picture
 	if(issilicon(user))
-		var/obj/item/camera/siliconcam/targetcam
+		var/obj/item/assembly/camera/siliconcam/targetcam
 		if(isAI(user))
 			var/mob/living/silicon/ai/R = user
 			targetcam = R.aicamera

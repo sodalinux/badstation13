@@ -144,7 +144,7 @@
 
 /datum/quirk/photographer/on_spawn()
 	var/mob/living/carbon/human/H = quirk_holder
-	var/obj/item/camera/camera = new(get_turf(H))
+	var/obj/item/assembly/camera/camera = new(get_turf(H))
 	var/list/camera_slots = list (
 		"neck" = ITEM_SLOT_NECK,
 		"left pocket" = ITEM_SLOT_LPOCKET,

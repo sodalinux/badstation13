@@ -124,7 +124,7 @@
 				borgo.aicamera?.viewpictures(usr)
 
 		if("printImage")
-			var/obj/item/camera/siliconcam/robot_camera/borgcam = borgo.aicamera
+			var/obj/item/assembly/camera/siliconcam/robot_camera/borgcam = borgo.aicamera
 			borgcam?.borgprint(usr)
 
 		if("toggleThrusters")

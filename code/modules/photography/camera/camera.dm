@@ -1,7 +1,7 @@
 
 #define CAMERA_PICTURE_SIZE_HARD_LIMIT 21
 
-/obj/item/camera
+/obj/item/assembly/camera
 	name = "camera"
 	icon = 'icons/obj/items_and_weapons.dmi'
 	desc = "A polaroid camera."
@@ -40,33 +40,33 @@
 	var/default_picture_name
 
 
-/obj/item/camera/attack_self(mob/user)
+/obj/item/assembly/camera/attack_self(mob/user)
 	if(!disk)
 		return
 	to_chat(user, "<span class='notice'>You eject [disk] out the back of [src].</span>")
 	user.put_in_hands(disk)
 	disk = null
 
-/obj/item/camera/examine(mob/user)
+/obj/item/assembly/camera/examine(mob/user)
 	. = ..()
 	. += "<span class='notice'>Alt-click to change its focusing, allowing you to set how big of an area it will capture.</span>"
 
-/obj/item/camera/proc/adjust_zoom(mob/user)
+/obj/item/assembly/camera/proc/adjust_zoom(mob/user)
 	var/desired_x = input(user, "How high do you want the camera to shoot, between [picture_size_x_min] and [picture_size_x_max]?", "Zoom", picture_size_x) as num
 	var/desired_y = input(user, "How wide do you want the camera to shoot, between [picture_size_y_min] and [picture_size_y_max]?", "Zoom", picture_size_y) as num
 	picture_size_x = min(CLAMP(desired_x, picture_size_x_min, picture_size_x_max), CAMERA_PICTURE_SIZE_HARD_LIMIT)
 	picture_size_y = min(CLAMP(desired_y, picture_size_y_min, picture_size_y_max), CAMERA_PICTURE_SIZE_HARD_LIMIT)
 
-/obj/item/camera/AltClick(mob/user)
+/obj/item/assembly/camera/AltClick(mob/user)
 	if(!user.canUseTopic(src, BE_CLOSE))
 		return
 	adjust_zoom(user)
 
-/obj/item/camera/attack(mob/living/carbon/human/M, mob/user)
+/obj/item/assembly/camera/attack(mob/living/carbon/human/M, mob/user)
 	return
 
-/obj/item/camera/attackby(obj/item/I, mob/user, params)
-	if(istype(I, /obj/item/camera_film))
+/obj/item/assembly/camera/attackby(obj/item/I, mob/user, params)
+	if(istype(I, /obj/item/assembly/camera_film))
 		if(pictures_left)
 			to_chat(user, "<span class='notice'>[src] still has some film in it!</span>")
 			return
@@ -88,12 +88,12 @@
 		return TRUE //no afterattack
 	..()
 
-/obj/item/camera/examine(mob/user)
+/obj/item/assembly/camera/examine(mob/user)
 	. = ..()
 	. += "It has [pictures_left] photos left."
 
 //user can be atom or mob
-/obj/item/camera/proc/can_target(atom/target, mob/user, prox_flag)
+/obj/item/assembly/camera/proc/can_target(atom/target, mob/user, prox_flag)
 	if(!on || blending || !pictures_left)
 		return FALSE
 	var/turf/T = get_turf(target)
@@ -111,7 +111,7 @@
 			return FALSE
 	return TRUE
 
-/obj/item/camera/afterattack(atom/target, mob/user, flag)
+/obj/item/assembly/camera/afterattack(atom/target, mob/user, flag)
 	if (disk)
 		if(ismob(target))
 			if (disk.record)
@@ -141,18 +141,18 @@
 	INVOKE_ASYNC(src, .proc/captureimage, target, user, flag, picture_size_x - 1, picture_size_y - 1)
 
 
-/obj/item/camera/proc/cooldown()
+/obj/item/assembly/camera/proc/cooldown()
 	UNTIL(!blending)
 	icon_state = state_on
 	on = TRUE
 
-/obj/item/camera/proc/show_picture(mob/user, datum/picture/selection)
+/obj/item/assembly/camera/proc/show_picture(mob/user, datum/picture/selection)
 	var/obj/item/photo/P = new(src, selection)
 	P.show(user)
 	to_chat(user, P.desc)
 	qdel(P)
 
-/obj/item/camera/proc/captureimage(atom/target, mob/user, flag, size_x = 1, size_y = 1)
+/obj/item/assembly/camera/proc/captureimage(atom/target, mob/user, flag, size_x = 1, size_y = 1)
 	if(flash_enabled)
 		set_light_on(TRUE)
 		addtimer(CALLBACK(src, .proc/flash_end), FLASH_LIGHT_DURATION, TIMER_OVERRIDE|TIMER_UNIQUE)
@@ -210,14 +210,14 @@
 	blending = FALSE
 
 
-/obj/item/camera/proc/flash_end()
+/obj/item/assembly/camera/proc/flash_end()
 	set_light_on(FALSE)
 
 
-/obj/item/camera/proc/after_picture(mob/user, datum/picture/picture, proximity_flag)
+/obj/item/assembly/camera/proc/after_picture(mob/user, datum/picture/picture, proximity_flag)
 	printpicture(user, picture)
 
-/obj/item/camera/proc/printpicture(mob/user, datum/picture/picture) //Normal camera proc for creating photos
+/obj/item/assembly/camera/proc/printpicture(mob/user, datum/picture/picture) //Normal camera proc for creating photos
 	var/obj/item/photo/p = new(get_turf(src), picture)
 	if(in_range(src, user)) //needed because of TK
 		user.put_in_hands(p)
