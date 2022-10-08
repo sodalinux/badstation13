@@ -39,9 +39,6 @@
 	/// Set when a player uses a pen on a renamable object
 	var/renamedByPlayer = FALSE
 
-	/// additional options for pen renaming (pen_act)
-	var/list/pen_options
-
 	var/drag_slowdown // Amont of multiplicative slowdown applied if pulled. >1 makes you slower, <1 makes you faster.
 
 	vis_flags = VIS_INHERIT_PLANE //when this be added to vis_contents of something it inherit something.plane, important for visualisation of obj in openspace.
@@ -365,33 +362,9 @@
 /obj/examine(mob/user)
 	. = ..()
 	if(obj_flags & UNIQUE_RENAME)
-		. += "<span class='notice'>Use a pen on it to modify it.</span>"
+		. += "<span class='notice'>Use a pen on it to rename it or change its description.</span>"
 	if(unique_reskin && !current_skin)
 		. += "<span class='notice'>Alt-click it to reskin it.</span>"
-
-/// similar to how ui_act works, add more options by modifying pen_options
-/obj/pen_act(mob/living/user, penchoice)
-
-	switch(penchoice)
-		if("Rename")
-			var/input = stripped_input(user,"What do you want to name \the [src.name]?", ,"", MAX_NAME_LEN)
-			var/oldname = src.name
-			if(QDELETED(src) || !user.canUseTopic(src, BE_CLOSE))
-				return
-			if(oldname == input)
-				to_chat(user, "You changed \the [src.name] to... well... \the [src.name].")
-			else
-				src.name = input
-				to_chat(user, "\The [oldname] has been successfully been renamed to \the [input].")
-				src.renamedByPlayer = TRUE
-
-		if("Change description")
-			var/input = stripped_input(user,"Describe \the [src.name] here", ,"", 100)
-			if(QDELETED(src) || !user.canUseTopic(src, BE_CLOSE))
-				return
-			src.desc = input
-			to_chat(user, "You have successfully changed \the [src.name]'s description.")
-
 
 /obj/AltClick(mob/user)
 	. = ..()

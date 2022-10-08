@@ -29,9 +29,8 @@
 	item_state = "syringe_kit"
 	lefthand_file = 'icons/mob/inhands/equipment/medical_lefthand.dmi'
 	righthand_file = 'icons/mob/inhands/equipment/medical_righthand.dmi'
-	resistance_flags = FLAMMABLE
 	obj_flags = UNIQUE_RENAME
-	pen_options = list("Change Apperance")
+	resistance_flags = FLAMMABLE
 	var/foldable = /obj/item/stack/sheet/cardboard
 	var/illustration = "writing"
 
@@ -76,11 +75,6 @@
 	if(istype(W, /obj/item/stack/package_wrap))
 		return 0
 	return ..()
-
-/obj/item/storage/box/pen_act(mob/living/user, penchoice)
-	. = ..()
-	if(penchoice == "Change Apperance")
-		to_chat(user, "Good job me, now code it properly.")
 
 //Locker overloading issue solving boxes
 /obj/item/storage/box/suitbox
