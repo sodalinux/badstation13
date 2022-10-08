@@ -30,6 +30,8 @@
 	lefthand_file = 'icons/mob/inhands/equipment/medical_lefthand.dmi'
 	righthand_file = 'icons/mob/inhands/equipment/medical_righthand.dmi'
 	resistance_flags = FLAMMABLE
+	obj_flags = UNIQUE_RENAME
+	pen_options = list("Change Apperance")
 	var/foldable = /obj/item/stack/sheet/cardboard
 	var/illustration = "writing"
 
@@ -74,6 +76,11 @@
 	if(istype(W, /obj/item/stack/package_wrap))
 		return 0
 	return ..()
+
+/obj/item/storage/box/pen_act(mob/living/user, penchoice)
+	. = ..()
+	if(penchoice == "Change Apperance")
+		to_chat(user, "Good job me, now code it properly.")
 
 //Locker overloading issue solving boxes
 /obj/item/storage/box/suitbox
@@ -1399,7 +1406,7 @@
 /obj/item/storage/box/radiokey/clown  // honk
 	name = "\improper H.O.N.K. CO fake encryption keys"
 	desc = "Totally prank your friends with these realistic encryption keys!"
-	
+
 /obj/item/storage/box/radiokey/clown/PopulateContents()
 	new /obj/item/encryptionkey/heads/rd/fake(src)
 	new /obj/item/encryptionkey/heads/hos/fake(src)
