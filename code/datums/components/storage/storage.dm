@@ -511,6 +511,8 @@
 		if(labeler.mode)
 			return FALSE
 	. = TRUE //no afterattack
+	if(istype(I, /obj/item/pen) && parent.obj_flags & UNIQUE_RENAME) // let it pass so you can pen afterattack
+		return COMPONENT_SKIP_ATTACK
 	if(iscyborg(M))
 		return
 	if(!can_be_inserted(I, FALSE, M))
