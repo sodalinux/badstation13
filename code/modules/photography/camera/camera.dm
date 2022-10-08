@@ -209,6 +209,10 @@
 	after_picture(user, P, flag)
 	blending = FALSE
 
+/obj/item/assembly/camera/activate()
+	if(!..())
+		return FALSE//Cooldown check
+	afterattack(get_turf(src))
 
 /obj/item/assembly/camera/proc/flash_end()
 	set_light_on(FALSE)
