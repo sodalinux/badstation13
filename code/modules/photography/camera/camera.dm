@@ -66,7 +66,7 @@
 	return
 
 /obj/item/assembly/camera/attackby(obj/item/I, mob/user, params)
-	if(istype(I, /obj/item/assembly/camera_film))
+	if(istype(I, /obj/item/camera_film))
 		if(pictures_left)
 			to_chat(user, "<span class='notice'>[src] still has some film in it!</span>")
 			return
