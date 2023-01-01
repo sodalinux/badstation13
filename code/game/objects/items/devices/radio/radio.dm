@@ -411,7 +411,7 @@
 
 /obj/item/radio/borg/recalculateChannels()
 	var/mob/living/silicon/robot/R = loc
-	if(istype(loc))
+	if(istype(R))
 		for(var/channel in R.module.radio_channels)
 			channels[channel] = 1
 	. = ..()

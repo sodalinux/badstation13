@@ -37,7 +37,7 @@
 	var/allow_riding = TRUE
 	var/canDispose = FALSE // Whether the borg can stuff itself into disposal
 
-	var/list/radio_channels = list() // what key is applied on moduling
+	var/list/radio_channels = list() // wht key is applied on moduling
 
 /obj/item/robot_module/Initialize(mapload)
 	. = ..()
@@ -459,8 +459,6 @@
 	can_be_pushed = FALSE
 	hat_offset = -2
 
-	radio_channels = list(RADIO_CHANNEL_SERVICE)  // temporary until civilian channel
-
 /obj/item/robot_module/peacekeeper/do_transform_animation()
 	..()
 	to_chat(loc, "<span class='userdanger'>Under ASIMOV, you are an enforcer of the PEACE and preventer of HUMAN HARM. \
@@ -619,8 +617,6 @@
 	cyborg_base_icon = "borgi"
 	moduleselect_icon = "standard"
 
-	radio_channels = list(RADIO_CHANNEL_COMMAND)  // to be kidnapped by the HoP
-
 /obj/item/robot_module/miner
 	name = "Miner"
 	basic_modules = list(
@@ -736,7 +732,7 @@
 	can_be_pushed = FALSE
 	hat_offset = 3
 
-	radio_channels = list(RADIO_CHANNEL_SYNDICATE, RADIO_CHANNEL_MEDICAL)
+	radio_channels = list(RADIO_CHANNEL_SYNDICATE)
 
 /obj/item/robot_module/saboteur
 	name = "Syndicate Saboteur"
@@ -772,7 +768,7 @@
 	hat_offset = -4
 	canDispose = TRUE
 
-	radio_channels = list(RADIO_CHANNEL_SYNDICATE, RADIO_CHANNEL_ENGINEERING)
+	radio_channels = list(RADIO_CHANNEL_SYNDICATE)
 
 /datum/robot_energy_storage
 	var/name = "Generic energy storage"
