@@ -413,7 +413,7 @@
 	var/mob/living/silicon/robot/R = loc
 	if(istype(loc))
 		for(var/channel in R.module.radio_channels)
-			channels[channel] = TRUE
+			channels[channel] = 1
 	. = ..()
 
 
